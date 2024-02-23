@@ -46,28 +46,28 @@
 
 void gpio_led_blink_main(void *args)
 {
-    uint32_t    loopcnt = 5, delaySec = 1;
     uint32_t    gpioBaseAddr, pinNum;
 
     DebugP_log("GPIO LED Blink Test Started ...\r\n");
-    DebugP_log("LED will Blink for %d seconds ...\r\n", (loopcnt * delaySec * 2));
 
     /* Get address after translation translate */
     gpioBaseAddr = (uint32_t) AddrTranslateP_getLocalAddr(GPIO_LED_BASE_ADDR);
     pinNum       = GPIO_LED_PIN;
 
     GPIO_setDirMode(gpioBaseAddr, pinNum, GPIO_LED_DIR);
-    while(loopcnt > 0)
+    while(1)
     {
         GPIO_pinWriteHigh(gpioBaseAddr, pinNum);
-        ClockP_sleep(delaySec);
+        ClockP_usleep(150000);
         GPIO_pinWriteLow(gpioBaseAddr, pinNum);
-        ClockP_sleep(delaySec);
-
-        loopcnt--;
+        ClockP_usleep(50000);
+        GPIO_pinWriteHigh(gpioBaseAddr, pinNum);
+        ClockP_usleep(150000);
+        GPIO_pinWriteLow(gpioBaseAddr, pinNum);
+        ClockP_sleep(1);
     }
 
-    DebugP_log("GPIO LED Blink Test Passed!!\r\n");
-    DebugP_log("All tests have passed!!\r\n");
-
+    Board_driversClose();
+    Drivers_close();
 }
+
