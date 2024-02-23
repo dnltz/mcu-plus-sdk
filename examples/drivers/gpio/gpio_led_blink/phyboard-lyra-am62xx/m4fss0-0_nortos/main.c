@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2021 Texas Instruments Incorporated
+ *  Copyright (C) 2018-2022 Texas Instruments Incorporated
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions
@@ -30,44 +30,21 @@
  *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <drivers/gpio.h>
-#include <kernel/dpl/AddrTranslateP.h>
-#include <kernel/dpl/DebugP.h>
-#include <kernel/dpl/ClockP.h>
+#include <stdlib.h>
 #include "ti_drivers_config.h"
-#include "ti_drivers_open_close.h"
-#include "ti_board_open_close.h"
+#include "ti_board_config.h"
 
-/*
- * This example configures a GPIO pin connected to an LED on the EVM in
- * output mode.
- * The application toggles the LED on/off for 10 seconds and exits.
- */
+void gpio_led_blink_main(void *args);
 
-void gpio_led_blink_main(void *args)
+int main()
 {
-    uint32_t    gpioBaseAddr, pinNum;
+    System_init();
+    Board_init();
 
-    DebugP_log("GPIO LED Blink Test Started ...\r\n");
+    gpio_led_blink_main(NULL);
 
-    /* Get address after translation translate */
-    gpioBaseAddr = (uint32_t) AddrTranslateP_getLocalAddr(GPIO_LED_BASE_ADDR);
-    pinNum       = GPIO_LED_PIN;
+    Board_deinit();
+    System_deinit();
 
-    GPIO_setDirMode(gpioBaseAddr, pinNum, GPIO_LED_DIR);
-    while(1)
-    {
-        GPIO_pinWriteHigh(gpioBaseAddr, pinNum);
-        ClockP_usleep(150000);
-        GPIO_pinWriteLow(gpioBaseAddr, pinNum);
-        ClockP_usleep(50000);
-        GPIO_pinWriteHigh(gpioBaseAddr, pinNum);
-        ClockP_usleep(150000);
-        GPIO_pinWriteLow(gpioBaseAddr, pinNum);
-        ClockP_sleep(1);
-    }
-
-    Board_driversClose();
-    Drivers_close();
+    return 0;
 }
-
