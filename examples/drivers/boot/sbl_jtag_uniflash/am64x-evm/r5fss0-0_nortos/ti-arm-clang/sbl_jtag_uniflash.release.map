@@ -1,0 +1,1658 @@
+******************************************************************************
+            TI ARM Clang Linker Unix v3.2.0                    
+******************************************************************************
+>> Linked Wed Dec 13 15:05:02 2023
+
+OUTPUT FILE NAME:   <sbl_jtag_uniflash.release.out>
+ENTRY POINT SYMBOL: "_vectors_sbl"  address: 70000000
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  R5F_VECS              00000000   00000040  00000000  00000040  RWIX
+  R5F_TCMA              00000040   00007fc0  00000000  00007fc0  RWIX
+  R5F_TCMB0             41010000   00008000  00000000  00008000  RWIX
+  MSRAM_VECS            70000000   00000100  00000040  000000c0  RWIX
+  MSRAM_0               70000100   0005ff00  000101b0  0004fd50  RWIX
+  MSRAM_1               70060000   00020000  00016f80  00009080  RWIX
+  DDR                   80000000   00800000  00800000  00000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+70000000    70000000    00000040   00000040    r-x
+  70000000    70000000    00000040   00000040    r-x .vectors
+70000100    70000100    0000caf0   0000caf0    r-x
+  70000100    70000100    0000bc20   0000bc20    r-x .text
+  7000bd20    7000bd20    00000760   00000760    r-x .text.hwi
+  7000c480    7000c480    00000430   00000430    r-x .text.cache
+  7000c8b0    7000c8b0    00000218   00000218    r-x .text.mpu
+  7000cac8    7000cac8    00000128   00000128    r-x .text.boot
+7000cbf0    7000cbf0    00002638   00002638    rw-
+  7000cbf0    7000cbf0    00002638   00002638    rw- .data
+7000f230    7000f230    00001080   00001080    r--
+  7000f230    7000f230    00001080   00001080    r-- .rodata
+70060000    70060000    00015b80   00000000    rw-
+  70060000    70060000    00009b80   00000000    rw- .bss
+  70069b80    70069b80    00008000   00000000    rw- .sysmem
+  70071b80    70071b80    00004000   00000000    rw- .stack
+70075b80    70075b80    00001400   00000000    r--
+  70075b80    70075b80    00001000   00000000    r-- .irqstack
+  70076b80    70076b80    00000100   00000000    r-- .fiqstack
+  70076c80    70076c80    00000100   00000000    r-- .svcstack
+  70076d80    70076d80    00000100   00000000    r-- .abortstack
+  70076e80    70076e80    00000100   00000000    r-- .undefinedstack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.vectors   0    70000000    00000040     
+                  70000000    00000040     nortos.am64x.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vectors_nortos_sbl_asm.obj (.vectors)
+
+.text      0    70000100    0000bc20     
+                  70000100    00000ddc     libc.a : _printfi.c.obj (.text:__TI_printfi_nofloat)
+                  70000edc    00000cec     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_open)
+                  70001bc8    0000083c                                                : mmcsd_v0.obj (.text.MMCSD_transfer)
+                  70002404    000006ac     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiOpen)
+                  70002ab0    000005b0     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_phy.obj (.text.OSPI_phyFindOTP1)
+                  70003060    00000598     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._vsnprintf)
+                  700035f8    000003ec     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.text.DDR_init)
+                  700039e4    0000039c                                                : ospi_phy.obj (.text.OSPI_phyFindOTP2)
+                  70003d80    00000398     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._ftoa)
+                  70004118    00000008     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiClose)
+                  70004120    00000390     libc.a : strcmp32.S.obj (.text:strcmp)
+                  700044b0    0000037c     drivers.am64x.r5f.ti-arm-clang.release.lib : sciclient.obj (.text.Sciclient_service)
+                  7000482c    00000358     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_setQeBit)
+                  70004b84    00000004     ti_board_open_close.obj (.text.Board_driversOpen)
+                  70004b88    00000310     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._etoa)
+                  70004e98    0000030a     drivers.am64x.r5f.ti-arm-clang.release.lib : bootloader_uniflash.obj (.text.Bootloader_uniflashProcessFlashCommands)
+                  700051a2    00000300                                                : ospi_v0.obj (.text.OSPI_open)
+                  700054a2    00000002                                                : mmcsd_v0.obj (.text.MMCSD_isr)
+                  700054a4    0000026c     libc.a : fgets.c.obj (.text._dofgets)
+                  70005710    00000204     main.obj (.text.sbl_jtag_uniflash_load_file)
+                  70005914    000001f8     libc.a : strtol.c.obj (.text.strtol)
+                  70005b0c    000001d0     libclang_rt.builtins.a : udivsi3.S.obj (.text.__udivsi3)
+                  70005cdc    000001c0     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.text.TimerP_setup)
+                  70005e9c    000001c0     libc.a : fopen.c.obj (.text._openfile)
+                  7000605c    000001b4            : memory.c.obj (.text.aligned_alloc)
+                  70006210    000001b0            : memory.c.obj (.text.free)
+                  700063c0    00000186     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_setProtocol)
+                  70006546    00000152                                                : mmcsd_v0.obj (.text.MMCSD_phyConfigure)
+                  70006698    00000152     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._ntoa_format)
+                  700067ea    00000002     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_isr)
+                  700067ec    00000144     libc.a : setvbuf.c.obj (.text.setvbuf)
+                  70006930    00000138     libsysbm.a : open.c.obj (.text.open)
+                  70006a68    00000134     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_readCmd)
+                  70006b9c    00000132                                                : soc.obj (.text.SOC_moduleSetClockFrequency)
+                  70006cce    00000126                                                : ospi_v0.obj (.text.OSPI_writeIndirect)
+                  70006df4    00000120                                                : lpddr4_16bit.obj (.text.LPDDR4_CheckCtlInterrupt)
+                  70006f14    0000011a     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiReset)
+                  7000702e    00000002     nortos.am64x.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_destruct)
+                  70007030    00000118     libclang_rt.builtins.a : udivmoddi4.S.obj (.text)
+                  70007148    00000112     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4_16bit.obj (.text.LPDDR4_AckCtlInterrupt)
+                  7000725a    0000010e                                                : ospi_v0.obj (.text.OSPI_writeCmd)
+                  70007368    0000010a                                                : ospi_v0.obj (.text.OSPI_readDirect)
+                  70007472    00000102     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.text.ClockP_init)
+                  70007574    000000f6     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_read)
+                  7000766a    00000002     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._out_null)
+                  7000766c    000000f4     libc.a : fputc.c.obj (.text.fputc)
+                  70007760    000000f2     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_write)
+                  70007852    000000f0                                                : bootloader_mmcsd_raw.obj (.text.Bootloader_MmcsdRaw_writeToOffset)
+                  70007942    00000002     --HOLE-- [fill = 0]
+                  70007944    000000e8     libc.a : _bufread.c.obj (.text.__TI_buff_read)
+                  70007a2c    000000e6     main.obj (.text.main)
+                  70007b12    000000de     drivers.am64x.r5f.ti-arm-clang.release.lib : bootloader_mmcsd_raw.obj (.text.Bootloader_MmcsdRaw_readFromOffset)
+                  70007bf0    000000d8                                                : bootloader_uniflash.obj (.text.Bootloader_uniflashFlashOrVerifyXipFile)
+                  70007cc8    000000c8     libc.a : getdevice.c.obj (.text.getdevice)
+                  70007d90    000000c6     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_setOeBit)
+                  70007e56    000000be                                              : flash_nor_ospi.obj (.text.Flash_norOspiWrite)
+                  70007f14    000000be     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_halSetBusFreq)
+                  70007fd2    000000b6     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiErase)
+                  70008088    000000b6                                              : flash_nor_ospi.obj (.text.Flash_norOspiEraseSector)
+                  7000813e    000000b6                                              : flash_nor_ospi.obj (.text.Flash_norOspiWaitReady)
+                  700081f4    000000b4     libc.a : fclose.c.obj (.text.__TI_closefile)
+                  700082a8    000000b4            : fseek.c.obj (.text.fseeko)
+                  7000835c    000000b4            : ftell.c.obj (.text.ftello)
+                  70008410    000000b0     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._ntoa_long_long)
+                  700084c0    000000a8     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_enableBootPartition)
+                  70008568    000000a6     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._out_rev)
+                  7000860e    000000a4     drivers.am64x.r5f.ti-arm-clang.release.lib : bootloader_uniflash.obj (.text.Bootloader_uniflashFlashVerifyFile)
+                  700086b2    000000a4                                                : bootloader_uniflash.obj (.text.Bootloader_uniflashFlashVerifyFileMMCSDRaw)
+                  70008756    000000a4                                                : sciclient_pm.obj (.text.Sciclient_pmQueryModuleClkFreq)
+                  700087fa    00000002     --HOLE-- [fill = 0]
+                  700087fc    000000a4     libc.a : memory.c.obj (.text.split)
+                  700088a0    000000a0     libsysbm.a : hostrename.c.obj (.text.HOSTrename)
+                  70008940    0000009e     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiReadId)
+                  700089de    00000002     --HOLE-- [fill = 0]
+                  700089e0    0000009c     libc.a : _io_perm.c.obj (.text.__TI_wrt_ok)
+                  70008a7c    0000009a     drivers.am64x.r5f.ti-arm-clang.release.lib : bootloader_uniflash.obj (.text.Bootloader_uniflashFlashFile)
+                  70008b16    0000009a                                                : sciclient.obj (.text.Sciclient_init)
+                  70008bb0    0000009a                                                : sciclient.obj (.text.Sciclient_sendMessage)
+                  70008c4a    00000002     --HOLE-- [fill = 0]
+                  70008c4c    00000098     libsysbm.a : hostlseek.c.obj (.text.HOSTlseek)
+                  70008ce4    00000096     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_priv.obj (.text.MMCSD_parseCSDSd)
+                  70008d7a    00000096     nortos.am64x.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_pend)
+                  70008e10    00000094     libsysbm.a : hostopen.c.obj (.text.HOSTopen)
+                  70008ea4    00000094     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_phy.obj (.text.OSPI_phyTuneDDR)
+                  70008f38    00000092                                                : sciclient_pm.obj (.text.Sciclient_pmSetModuleClkFreq)
+                  70008fca    00000090                                                : mmcsd_priv.obj (.text.MMCSD_parseECSDEmmc)
+                  7000905a    00000002     --HOLE-- [fill = 0]
+                  7000905c    0000008c     libc.a : fflush.c.obj (.text.__TI_doflush)
+                  700090e8    0000008c     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._ntoa_long)
+                  70009174    0000008c     libsysbm.a : close.c.obj (.text.close)
+                  70009200    0000008a     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_priv.obj (.text.MMCSD_parseCIDEmmc)
+                  7000928a    00000002     --HOLE-- [fill = 0]
+                  7000928c    00000084     libsysbm.a : hostread.c.obj (.text.HOSTread)
+                  70009310    00000084                : hostwrite.c.obj (.text.HOSTwrite)
+                  70009394    00000082     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_init)
+                  70009416    00000082                                                : ospi_v0.obj (.text.OSPI_init)
+                  70009498    00000080     libc.a : fopen.c.obj (.text._search_fp)
+                  70009518    0000007c     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_phyInit)
+                  70009594    0000007c                                                : pinmux.obj (.text.Pinmux_config)
+                  70009610    0000007a     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiRegWrite)
+                  7000968a    0000007a     drivers.am64x.r5f.ti-arm-clang.release.lib : sciclient_pm.obj (.text.Sciclient_pmGetModuleClkNumParent)
+                  70009704    00000078     libc.a : snprintf.c.obj (.text.snprintf)
+                  7000977c    00000076     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_priv.obj (.text.MMCSD_parseCIDSd)
+                  700097f2    00000002     --HOLE-- [fill = 0]
+                  700097f4    00000074     libc.a : _io_perm.c.obj (.text.__TI_rd_ok)
+                  70009868    00000070     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_phy.obj (.text.OSPI_phyResyncDLL)
+                  700098d8    0000006e     ti_board_open_close.obj (.text.Board_flashOpen)
+                  70009946    0000006e     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4.obj (.text.LPDDR4_Start)
+                  700099b4    0000006e                                                : soc.obj (.text.SOC_moduleClockEnable)
+                  70009a22    0000006e                                                : sciclient_pm.obj (.text.Sciclient_pmGetModuleState)
+                  70009a90    0000006c     libsysbm.a : hostunlink.c.obj (.text.HOSTunlink)
+                  70009afc    0000006c     libc.a : atoi.c.obj (.text.atoi)
+                  70009b68    0000006a     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_offsetToSectorPage)
+                  70009bd2    00000068     nortos.am64x.r5f.ti-arm-clang.release.lib : AddrTranslateP.obj (.text.AddrTranslateP_getLocalAddr)
+                  70009c3a    00000066     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiRegRead)
+                  70009ca0    00000066                                              : flash_nor_ospi.obj (.text.Flash_norOspiSetRegCfg)
+                  70009d06    00000066                                              : flash.obj (.text.Flash_offsetToBlkPage)
+                  70009d6c    00000066     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_close)
+                  70009dd2    00000066                                                : sciclient_pm.obj (.text.Sciclient_pmGetModuleClkFreq)
+                  70009e38    00000066                                                : sciclient_pm.obj (.text.Sciclient_pmGetModuleClkParent)
+                  70009e9e    00000064                                                : csl_emif.obj (.text.CSL_emifConfig)
+                  70009f02    00000064                                                : mmcsd_v0.obj (.text.MMCSD_isReadyForTransfer)
+                  70009f66    00000064                                                : ospi_v0.obj (.text.OSPI_setXferOpCodes)
+                  70009fca    00000064                                                : sciclient_pm.obj (.text.Sciclient_pmModuleGetClkStatus)
+                  7000a02e    00000002     --HOLE-- [fill = 0]
+                  7000a030    00000060     libsysbm.a : hostclose.c.obj (.text.HOSTclose)
+                  7000a090    00000060     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_cmdStatusPollingFxn)
+                  7000a0f0    00000060     nortos.am64x.r5f.ti-arm-clang.release.lib : PmuP_armv7r.obj (.text.pmu)
+                  7000a150    0000005e                                               : ClockP_nortos.obj (.text.ClockP_timerTickIsr)
+                  7000a1ae    0000005e     drivers.am64x.r5f.ti-arm-clang.release.lib : sciclient_pm.obj (.text.Sciclient_pmModuleClkRequest)
+                  7000a20c    0000005e                                                : sciclient_pm.obj (.text.Sciclient_pmSetModuleClkParent)
+                  7000a26a    0000005c                                                : ospi_phy.obj (.text.OSPI_phyFindRxHigh)
+                  7000a2c6    0000005c                                                : ospi_phy.obj (.text.OSPI_phyFindRxLow)
+                  7000a322    0000005c                                                : ospi_phy.obj (.text.OSPI_phyFindTxHigh)
+                  7000a37e    0000005c                                                : ospi_phy.obj (.text.OSPI_phyFindTxLow)
+                  7000a3da    0000005c     nortos.am64x.r5f.ti-arm-clang.release.lib : DebugP_log.obj (.text._DebugP_assert)
+                  7000a436    00000002     --HOLE-- [fill = 0]
+                  7000a438    00000058     libc.a : fopen.c.obj (.text.__TI_cleanup)
+                  7000a490    00000058     libsysbm.a : trgmsg.c.obj (.text.__TI_readmsg)
+                  7000a4e8    00000058                : trgmsg.c.obj (.text.__TI_writemsg)
+                  7000a540    00000058     libc.a : snprintf.c.obj (.text._outs)
+                  7000a598    00000058            : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  7000a5f0    00000056     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_getTimeUsec)
+                  7000a646    00000056     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiRead)
+                  7000a69c    00000054     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_halSendCommand)
+                  7000a6f0    00000054     libc.a : exit.c.obj (.text.exit)
+                  7000a744    00000054            : getdevice.c.obj (.text.finddevice)
+                  7000a798    00000052     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_close)
+                  7000a7ea    00000052                                                : ospi_v0.obj (.text.OSPI_setDeviceSize)
+                  7000a83c    00000052                                                : sciclient_pm.obj (.text.Sciclient_pmSetModuleState)
+                  7000a88e    00000052     main.obj (.text.sbl_jtag_uniflash_erase_all)
+                  7000a8e0    00000050     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_addToList)
+                  7000a930    00000050                                               : ClockP_nortos.obj (.text.ClockP_construct)
+                  7000a980    00000050     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_halSetBusWidth)
+                  7000a9d0    00000050                                                : sciclient_soc_priv.obj (.text.Sciclient_getContext)
+                  7000aa20    0000004e                                                : lpddr4.obj (.text.LPDDR4_ReadReg)
+                  7000aa6e    0000004c     ti_drivers_open_close.obj (.text.Drivers_mmcsdOpen)
+                  7000aaba    0000004c     ti_drivers_open_close.obj (.text.Drivers_ospiOpen)
+                  7000ab06    00000002     --HOLE-- [fill = 0]
+                  7000ab08    0000004c     libc.a : fclose.c.obj (.text.fclose)
+                  7000ab54    0000004c            : fopen.c.obj (.text.fopen)
+                  7000aba0    0000004a     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_phy.obj (.text.OSPI_phyReadAttackVector)
+                  7000abea    0000004a                                                : pinmux.obj (.text.Pinmux_unlockMMR)
+                  7000ac34    00000048                                                : lpddr4.obj (.text.LPDDR4_WritePhyIndepConfig)
+                  7000ac7c    00000048                                                : ospi_phy.obj (.text.OSPI_phySetRdDelayTxRxDLL)
+                  7000acc4    00000048     libc.a : memccpy.c.obj (.text.memccpy)
+                  7000ad0c    00000048     libsysbm.a : unlink.c.obj (.text.unlink)
+                  7000ad54    00000046     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4.obj (.text.LPDDR4_WritePhyConfig)
+                  7000ad9a    00000046                                                : mmcsd_priv.obj (.text.MMCSD_parseCSDEmmc)
+                  7000ade0    00000046                                                : ospi_v0.obj (.text.OSPI_enablePhy)
+                  7000ae26    00000044                                                : sciclient_pm.obj (.text.Sciclient_pmSetModuleRst)
+                  7000ae6a    00000042                                                : ddr_soc.obj (.text.DDR_socEnableVttRegulator)
+                  7000aeac    00000042     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.text.Flash_quirkSpansionUNHYSADisable)
+                  7000aeee    00000040     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_stop)
+                  7000af2e    00000040     ti_dpl_config.obj (.text.Dpl_init)
+                  7000af6e    00000040     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4.obj (.text.LPDDR4_WriteCtlConfig)
+                  7000afae    00000040     nortos.am64x.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_constructBinary)
+                  7000afee    00000002     --HOLE-- [fill = 0]
+                  7000aff0    00000040     libc.a : memory.c.obj (.text.free_list_insert)
+                  7000b030    0000003e     drivers.am64x.r5f.ti-arm-clang.release.lib : soc.obj (.text.SOC_controlModuleUnlockMMR)
+                  7000b06e    0000003e     nortos.am64x.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_constructMutex)
+                  7000b0ac    0000003e     ti_drivers_config.obj (.text.System_init)
+                  7000b0ea    0000003c     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_halBusPower)
+                  7000b126    0000003a     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_destruct)
+                  7000b160    0000003a     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_open)
+                  7000b19a    0000003a     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_halSoftReset)
+                  7000b1d4    0000003a                                                : ospi_dma.obj (.text.OSPI_dmaOpen)
+                  7000b20e    00000038                                                : ospi_v0.obj (.text.OSPI_disablePhy)
+                  7000b246    00000038                                                : sciclient.obj (.text.Sciclient_getCurrentContext)
+                  7000b27e    00000038     nortos.am64x.r5f.ti-arm-clang.release.lib : DebugP_nortos.obj (.text._DebugP_logZone)
+                  7000b2b6    00000036     ti_power_clock_config.obj (.text.Module_clockSetFrequency)
+                  7000b2ec    00000034     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_start)
+                  7000b320    00000034     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4_16bit.obj (.text.LPDDR4_EnablePIInitiator)
+                  7000b354    00000034                                                : lpddr4.obj (.text.LPDDR4_PollCtlIrq)
+                  7000b388    00000034     libc.a : memory.c.obj (.text.free_list_remove)
+                  7000b3bc    00000034     libsysbm.a : lseek.c.obj (.text.lseek)
+                  7000b3f0    00000034                : read.c.obj (.text.read)
+                  7000b424    00000034                : write.c.obj (.text.write)
+                  7000b458    00000032     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_usleep)
+                  7000b48a    00000032                                               : SemaphoreP_nortos.obj (.text.SemaphoreP_post)
+                  7000b4bc    00000030     libc.a : snprintf.c.obj (.text._outc)
+                  7000b4ec    00000030     nortos.am64x.r5f.ti-arm-clang.release.lib : PmuP_armv7r_asm.obj (.text.pmu)
+                  7000b51c    0000002e     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.text.DDR_setFreq)
+                  7000b54a    0000002e                                                : mmcsd_v0.obj (.text.MMCSD_getHandle)
+                  7000b578    0000002e                                                : mmcsd_v0.obj (.text.MMCSD_halLinesResetCmd)
+                  7000b5a6    0000002e                                                : mmcsd_v0.obj (.text.MMCSD_halLinesResetDat)
+                  7000b5d4    0000002e     ti_power_clock_config.obj (.text.Module_clockEnable)
+                  7000b602    0000002c     ti_drivers_open_close.obj (.text.Drivers_close)
+                  7000b62e    0000002c     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_halCmdResponseGet)
+                  7000b65a    0000002c                                                : ospi_v0.obj (.text.OSPI_getHandle)
+                  7000b686    0000002a                                                : soc.obj (.text.SOC_controlModuleLockMMR)
+                  7000b6b0    00000028     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_sleepTicks)
+                  7000b6d8    00000028     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_enableDacMode)
+                  7000b700    00000026                                                : mmcsd_priv.obj (.text.MMCSD_parseSCRSd)
+                  7000b726    00000026                                                : ospi_v0.obj (.text.OSPI_setNumAddrBytes)
+                  7000b74c    00000024     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_getAttrs)
+                  7000b770    00000024                                              : flash.obj (.text.Flash_getHandle)
+                  7000b794    00000024     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_dma.obj (.text.OSPI_dmaCopy)
+                  7000b7b8    00000024     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
+                  7000b7dc    00000024     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text.vprintf_)
+                  7000b800    00000022     ti_pinmux_config.obj (.text.Pinmux_init)
+                  7000b822    00000020     nortos.am64x.r5f.ti-arm-clang.release.lib : DebugP_log.obj (.text.DebugP_logZoneEnable)
+                  7000b842    00000020     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_configResetPin)
+                  7000b862    00000020                                                : soc.obj (.text.SOC_getSelfCpuClk)
+                  7000b882    00000020     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.text.TimerP_Params_init)
+                  7000b8a2    00000002     --HOLE-- [fill = 0]
+                  7000b8a4    00000020     libc.a : wcslen.c.obj (.text.wcslen)
+                  7000b8c4    0000001e     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_read)
+                  7000b8e2    0000001e                                              : flash.obj (.text.Flash_write)
+                  7000b900    0000001c     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_setRdDataCaptureDelay)
+                  7000b91c    0000001c     nortos.am64x.r5f.ti-arm-clang.release.lib : boot_armv7r.obj (.text._system_pre_init)
+                  7000b938    0000001c     libc.a : _printfi.c.obj (.text.strlen)
+                  7000b954    0000001c     libsysbm.a : hostrename.c.obj (.text.strlen)
+                  7000b970    0000001c     libc.a : memcpy32.S.obj (.text:TI_memcpy_small)
+                  7000b98c    0000001a     drivers.am64x.r5f.ti-arm-clang.release.lib : csl_emif.obj (.text.CSL_emifDisableECC)
+                  7000b9a6    0000001a                                                : csl_emif.obj (.text.CSL_emifEnableECC)
+                  7000b9c0    00000018     ti_board_open_close.obj (.text.Board_driversClose)
+                  7000b9d8    00000018     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4.obj (.text.LPDDR4_Init)
+                  7000b9f0    00000018                                                : ospi_v0.obj (.text.OSPI_disablePhyPipeline)
+                  7000ba08    00000018                                                : ospi_dma.obj (.text.OSPI_dmaClose)
+                  7000ba20    00000018                                                : ospi_v0.obj (.text.OSPI_setCmdDummyCycles)
+                  7000ba38    00000018                                                : sciclient_soc_priv.obj (.text.Sciclient_getDevId)
+                  7000ba50    00000018     libc.a : memset32.S.obj (.text:TI_memset_small)
+                  7000ba68    00000016     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_ReadCmdParams_init)
+                  7000ba7e    00000016                                                : ospi_v0.obj (.text.OSPI_WriteCmdParams_init)
+                  7000ba94    00000014     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_eraseSector)
+                  7000baa8    00000014     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.text.MMCSD_getBlockSize)
+                  7000babc    00000014                                                : ospi_v0.obj (.text.OSPI_enableModeBitsCmd)
+                  7000bad0    00000014                                                : ospi_v0.obj (.text.OSPI_setReadDummyCycles)
+                  7000bae4    00000014     libc.a : fgets.c.obj (.text.gets)
+                  7000baf8    00000014     libsysbm.a : hostrename.c.obj (.text.strcpy)
+                  7000bb0c    00000012     drivers.am64x.r5f.ti-arm-clang.release.lib : csl_emif.obj (.text.CSL_emifClearECCInterruptStatus)
+                  7000bb1e    00000012                                                : csl_emif.obj (.text.CSL_emifEnableECCInterrupts)
+                  7000bb30    00000012     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_eraseBlk)
+                  7000bb42    00000012     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_Transaction_init)
+                  7000bb54    00000012     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.text.TimerP_clearOverflowInt)
+                  7000bb66    00000010     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_getPhyTuningOffset)
+                  7000bb76    00000010     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4.obj (.text.LPDDR4_Probe)
+                  7000bb86    00000010                                                : ospi_v0.obj (.text.OSPI_enableModeBitsRead)
+                  7000bb96    00000010                                                : ospi_phy.obj (.text.OSPI_phyGetTuningData)
+                  7000bba6    00000010                                                : ospi_v0.obj (.text.OSPI_setModeBits)
+                  7000bbb6    00000002     --HOLE-- [fill = 0]
+                  7000bbb8    00000010     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
+                  7000bbc8    00000010     libc.a : fputc.c.obj (.text.putchar)
+                  7000bbd8    0000000e     ti_drivers_open_close.obj (.text.Drivers_open)
+                  7000bbe6    0000000e     board.am64x.r5f.ti-arm-clang.release.lib : flash.obj (.text.Flash_close)
+                  7000bbf4    0000000e     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_getBaudRateDivFromObj)
+                  7000bc02    0000000e     ti_power_clock_config.obj (.text.PowerClock_init)
+                  7000bc10    0000000c     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_getFlashDataBaseAddr)
+                  7000bc1c    0000000c                                                : sciclient.obj (.text.Sciclient_getSelfDevIdCore)
+                  7000bc28    0000000c     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
+                  7000bc34    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  7000bc40    0000000c     libc.a : memory.c.obj (.text.malloc)
+                  7000bc4c    0000000a     drivers.am64x.r5f.ti-arm-clang.release.lib : csl_sec_proxy.obj (.text.CSL_secProxyGetDataAddr)
+                  7000bc56    0000000a     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_Params_init)
+                  7000bc60    0000000c     libc.a : strcmp32.S.obj (.text)
+                  7000bc6c    0000000a     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_isActive)
+                  7000bc76    0000000a     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_setPhyEnableSuccess)
+                  7000bc80    0000000a     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.text.TimerP_start)
+                  7000bc8a    00000008     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_setCmdExtType)
+                  7000bc92    00000008     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.text._out_char)
+                  7000bc9a    00000002     --HOLE-- [fill = 0]
+                  7000bc9c    00000008     libc.a : exit.c.obj (.text:abort)
+                  7000bca4    00000006     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.text.OSPI_isPhyEnable)
+                  7000bcaa    00000004                                                : lpddr4.obj (.text.CPS_UncachedRead32)
+                  7000bcae    00000004                                                : lpddr4.obj (.text.CPS_UncachedWrite32)
+                  7000bcb2    00000004     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.text.ClockP_getTimerCount)
+                  7000bcb6    00000004                                               : ClockP_nortos_r5.obj (.text.ClockP_timerClearOverflowInt)
+                  7000bcba    00000004                                               : TimerP.obj (.text.TimerP_getCount)
+                  7000bcbe    00000004                                               : TimerP.obj (.text.TimerP_getReloadCount)
+                  7000bcc2    00000002     --HOLE-- [fill = 0]
+                  7000bcc4    00000004     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  7000bcc8    00000004     libc.a : _lock.c.obj (.text._nop)
+                  7000bccc    00000004            : fseek.c.obj (.text.fseek)
+                  7000bcd0    00000004     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  7000bcd4    00000004     libc.a : ftell.c.obj (.text.ftell)
+                  7000bcd8    00000004     ti_dpl_config.obj (.text.putchar_)
+                  7000bcdc    00000004     libsysbm.a : remove.c.obj (.text.remove)
+                  7000bce0    00000004     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
+                  7000bce4    00000008     libc.a : fputc.c.obj (.tramp.putchar.1)
+                  7000bcec    00000008     nortos.am64x.r5f.ti-arm-clang.release.lib : HwiP_armv7r_asm.obj (.tramp.HwiP_enable.1)
+                  7000bcf4    00000008                                               : HwiP_armv7r_asm.obj (.tramp.HwiP_restore.1)
+                  7000bcfc    00000008                                               : PmuP_armv7r_asm.obj (.tramp.PmuP_enableCounters.1)
+                  7000bd04    0000001c     --HOLE-- [fill = 0]
+
+.text.hwi 
+*          0    7000bd20    00000760     
+                  7000bd20    00000408     nortos.am64x.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vim.obj (.text.hwi)
+                  7000c128    00000220                                               : HwiP_armv7r_handlers_nortos.obj (.text.hwi)
+                  7000c348    000000c0                                               : HwiP_armv7r_handlers_nortos_asm.obj (.text.hwi)
+                  7000c408    00000070                                               : HwiP_armv7r_asm.obj (.text.hwi)
+                  7000c478    00000008                                               : HwiP_armv7r_asm.obj (.tramp.HwiP_enableFIQ.1)
+
+.text.cache 
+*          0    7000c480    00000430     
+                  7000c480    00000340     nortos.am64x.r5f.ti-arm-clang.release.lib : CacheP_armv7r_asm.obj (.text.cache)
+                  7000c7c0    000000d8                                               : CacheP_armv7r.obj (.text.cache)
+                  7000c898    00000008                                               : CacheP_armv7r_asm.obj (.tramp.CacheP_invL1d.1)
+                  7000c8a0    00000008                                               : CacheP_armv7r_asm.obj (.tramp.CacheP_enableL1p.1)
+                  7000c8a8    00000008                                               : HwiP_armv7r_asm.obj (.tramp.HwiP_restore.2)
+
+.text.mpu 
+*          0    7000c8b0    00000218     
+                  7000c8b0    0000018e     nortos.am64x.r5f.ti-arm-clang.release.lib : MpuP_armv7r.obj (.text.mpu)
+                  7000ca3e    00000002     --HOLE-- [fill = 0]
+                  7000ca40    00000078                                               : MpuP_armv7r_asm.obj (.text.mpu)
+                  7000cab8    00000008                                               : HwiP_armv7r_asm.obj (.tramp.HwiP_restore.3)
+                  7000cac0    00000008                                               : MpuP_armv7r_asm.obj (.tramp.MpuP_isEnableAsm.1)
+
+.text.boot 
+*          0    7000cac8    00000128     
+                  7000cac8    000000fc     nortos.am64x.r5f.ti-arm-clang.release.lib : boot_armv7r_asm.obj (.text.boot)
+                  7000cbc4    0000001e                                               : DebugP_log.obj (.text.boot)
+                  7000cbe2    0000000e     ti_dpl_config.obj (.text.boot)
+
+.data      0    7000cbf0    00002638     
+                  7000cbf0    000007ec     ti_drivers_config.obj (.data.DDRSS_phyReg)
+                  7000d3dc    0000069c     ti_drivers_config.obj (.data.DDRSS_ctlReg)
+                  7000da78    00000564     ti_drivers_config.obj (.data.DDRSS_phyIndepReg)
+                  7000dfdc    000003f6     ti_drivers_config.obj (.data.DDRSS_phyRegNum)
+                  7000e3d2    0000034e     ti_drivers_config.obj (.data.DDRSS_ctlRegNum)
+                  7000e720    000002b2     ti_drivers_config.obj (.data.DDRSS_phyIndepRegNum)
+                  7000e9d2    00000001     drivers.am64x.r5f.ti-arm-clang.release.lib : sciclient.obj (.data.gSecHeaderSizeWords)
+                  7000e9d3    00000001     --HOLE-- [fill = 0]
+                  7000e9d4    000000f0     libc.a : defs.c.obj (.data._ftable)
+                  7000eac4    000000c0     main.obj (.data.gMainMenu)
+                  7000eb84    0000009c     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.data.gMmcsdDrvObj)
+                  7000ec20    0000009c                                                : ospi_v0.obj (.data.gOspiDrvObj)
+                  7000ecbc    00000084     ti_board_open_close.obj (.data.gFlashDevCfg_S28HS512T)
+                  7000ed40    00000080     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_phy.obj (.data.gOspiFlashAttackVector)
+                  7000edc0    00000080                                                : ospi_phy.obj (.data.gReadBuf)
+                  7000ee40    00000078     libsysbm.a : host_device.c.obj (.data._device)
+                  7000eeb8    00000060     ti_pinmux_config.obj (.data.gPinMuxMainDomainCfg)
+                  7000ef18    00000050     libsysbm.a : host_device.c.obj (.data._stream)
+                  7000ef68    00000048     ti_drivers_config.obj (.data.gOspiAttrs)
+                  7000efb0    0000003c     ti_drivers_config.obj (.data.gMmcsdAttrs)
+                  7000efec    00000004     libc.a : defs.c.obj (.data.__TI_ft_end)
+                  7000eff0    00000038     ti_drivers_config.obj (.data.gDdrParams)
+                  7000f028    00000034     ti_board_open_close.obj (.data.gFlashAttrs_S28HS512T)
+                  7000f05c    00000028     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_phy.obj (.data.gPhyTuneWindowParamsGTE133)
+                  7000f084    00000028                                                : ospi_phy.obj (.data.gPhyTuneWindowParamsLT133)
+                  7000f0ac    00000024     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.data.gFlashToSpiProtocolMap)
+                  7000f0d0    00000024     ti_power_clock_config.obj (.data.gSocModulesClockFrequency)
+                  7000f0f4    00000020     ti_drivers_config.obj (.data.gOspiDmaRestrictRegions)
+                  7000f114    00000004     libc.a : aeabi_portable.c.obj (.data.__aeabi_errno)
+                  7000f118    00000020     drivers.am64x.r5f.ti-arm-clang.release.lib : sciclient_soc_priv.obj (.data.gSciclientSecProxyCfg)
+                  7000f138    0000001c     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.data.gFlashNorOspiFxns)
+                  7000f154    0000001c     ti_power_clock_config.obj (.data.gSocModules)
+                  7000f170    00000018     ti_dpl_config.obj (.data.gClockConfig)
+                  7000f188    00000014     ti_board_open_close.obj (.data.gFlashConfig)
+                  7000f19c    00000004     libc.a : _lock.c.obj (.data._lock)
+                  7000f1a0    0000000c     nortos.am64x.r5f.ti-arm-clang.release.lib : AddrTranslateP.obj (.data.gAddrTranslateConfig)
+                  7000f1ac    00000008     libc.a : exit.c.obj (.data..L_MergedGlobals)
+                  7000f1b4    00000008     ti_board_open_close.obj (.data.gFlashParams)
+                  7000f1bc    00000008     ti_drivers_config.obj (.data.gMmcsdConfig)
+                  7000f1c4    00000008     ti_drivers_open_close.obj (.data.gMmcsdParams)
+                  7000f1cc    00000008     ti_drivers_config.obj (.data.gOspiConfig)
+                  7000f1d4    00000008     ti_pinmux_config.obj (.data.gPinMuxMcuDomainCfg)
+                  7000f1dc    00000004     libc.a : _lock.c.obj (.data._unlock)
+                  7000f1e0    00000008     nortos.am64x.r5f.ti-arm-clang.release.lib : PmuP_armv7r.obj (.data.pmu)
+                  7000f1e8    00000004                                               : DebugP_log.obj (.data.gDebugLogZone)
+                  7000f1ec    00000004     ti_board_open_close.obj (.data.gFlashConfigNum)
+                  7000f1f0    00000004     ti_dpl_config.obj (.data.gHwiConfig)
+                  7000f1f4    00000004     ti_drivers_config.obj (.data.gMmcsdConfigNum)
+                  7000f1f8    00000004     ti_drivers_config.obj (.data.gOspiConfigNum)
+                  7000f1fc    00000004     ti_drivers_config.obj (.data.gOspiDmaConfigNum)
+                  7000f200    00000004     ti_drivers_open_close.obj (.data.gOspiParams)
+                  7000f204    00000004     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_phy.obj (.data.gPhyTuneWindowParams)
+                  7000f208    00000004                                                : sciclient.obj (.data.gSciclientHandle.0)
+                  7000f20c    00000004                                                : sciclient.obj (.data.gSciclientHandle.2)
+                  7000f210    00000004                                                : sciclient.obj (.data.gSciclientHandle.3)
+                  7000f214    00000004                                                : sciclient.obj (.data.gSciclientHandle.4)
+                  7000f218    00000004                                                : sciclient.obj (.data.gSciclientHandle.5)
+                  7000f21c    00000001     libc.a : memory.c.obj (.data.memory_is_initialized)
+                  7000f21d    00000003     --HOLE-- [fill = 0]
+                  7000f220    00000001     libsysbm.a : open.c.obj (.data.open.stream_init)
+                  7000f221    00000007     --HOLE-- [fill = 0]
+
+.rodata    0    7000f230    00001080     
+                  7000f230    00000132     drivers.am64x.r5f.ti-arm-clang.release.lib : lpddr4_16bit.obj (.rodata.CtlIntMap)
+                  7000f362    00000002     --HOLE-- [fill = 0]
+                  7000f364    0000012c                                                : sciclient_fmwSecureProxyMap.obj (.rodata.gSciclientMap)
+                  7000f490    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
+                  7000f591    00000003     main.obj (.rodata.str1.176328792963337784071)
+                  7000f594    00000064     ti_dpl_config.obj (.rodata.cfg)
+                  7000f5f8    00000052     main.obj (.rodata.str1.171135724027876188451)
+                  7000f64a    00000051     main.obj (.rodata.str1.66840473539710954921)
+                  7000f69b    00000051     main.obj (.rodata.str1.88864587114646350841)
+                  7000f6ec    00000004     nortos.am64x.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.rodata.gCacheL1dCacheLineSize)
+                  7000f6f0    00000050                                               : printf.obj (.rodata._ftoa.pow10)
+                  7000f740    00000046     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.rodata.str1.69637175957062244201)
+                  7000f786    00000041     main.obj (.rodata.str1.55017464818642898751)
+                  7000f7c7    0000003e     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.rodata.str1.155618297627321921901)
+                  7000f805    0000003a     main.obj (.rodata.str1.171590253234040549591)
+                  7000f83f    00000039     main.obj (.rodata.str1.84555903791196549931)
+                  7000f878    00000037     main.obj (.rodata.str1.47389027370924160151)
+                  7000f8af    00000037     main.obj (.rodata.str1.52501554851255701521)
+                  7000f8e6    00000037     nortos.am64x.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.rodata.str1.77784356401422800491)
+                  7000f91d    00000036     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.rodata.str1.73433922848408513671)
+                  7000f953    00000036     ti_drivers_open_close.obj (.rodata.str1.89322429334436556861)
+                  7000f989    00000036     ti_board_open_close.obj (.rodata.str1.92759273185302855351)
+                  7000f9bf    00000035     ti_drivers_open_close.obj (.rodata.str1.135241915826326793361)
+                  7000f9f4    00000034     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.rodata.str1.164743418995849697991)
+                  7000fa28    00000033     main.obj (.rodata.str1.17141933821247617371)
+                  7000fa5b    00000031     main.obj (.rodata.str1.55841430354152434161)
+                  7000fa8c    00000030     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.rodata..Lswitch.table.MMCSD_phyConfigure.4)
+                  7000fabc    00000030                                                : mmcsd_v0.obj (.rodata..Lswitch.table.MMCSD_phyConfigure.5)
+                  7000faec    00000030                                                : mmcsd_v0.obj (.rodata..Lswitch.table.MMCSD_phyConfigure.6)
+                  7000fb1c    00000030                                                : mmcsd_v0.obj (.rodata..Lswitch.table.MMCSD_phyConfigure)
+                  7000fb4c    00000030                                                : mmcsd_priv.obj (.rodata.gMonths)
+                  7000fb7c    0000002f                                                : ddr.obj (.rodata.str1.94111967193122311561)
+                  7000fbab    0000002e     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.rodata.str1.60552435462749564001)
+                  7000fbd9    0000002e     main.obj (.rodata.str1.69189412625334732771)
+                  7000fc07    0000002d     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.rodata.str1.116939344651230115321)
+                  7000fc34    0000002d     main.obj (.rodata.str1.42969106790848045441)
+                  7000fc61    0000002c     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.rodata.str1.115473847009400335091)
+                  7000fc8d    0000002c                                                : ddr.obj (.rodata.str1.53769595288076202821)
+                  7000fcb9    0000002b                                                : ddr.obj (.rodata.str1.79833557267131166431)
+                  7000fce4    0000002b     main.obj (.rodata.str1.81593080567723157351)
+                  7000fd0f    0000002a     main.obj (.rodata.str1.169425006640414195481)
+                  7000fd39    0000002a     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.rodata.str1.44587981942987503481)
+                  7000fd63    0000002a     nortos.am64x.r5f.ti-arm-clang.release.lib : DebugP_log.obj (.rodata.str1.8568035916953519521)
+                  7000fd8d    00000029     main.obj (.rodata.str1.59473202433939028451)
+                  7000fdb6    00000029     main.obj (.rodata.str1.66576556518284861641)
+                  7000fddf    00000028     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.rodata.str1.180652758740370262311)
+                  7000fe07    00000027     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.124546920576200709321)
+                  7000fe2e    00000027     main.obj (.rodata.str1.79551435545072341851)
+                  7000fe55    00000026     main.obj (.rodata.str1.96696425805949040631)
+                  7000fe7b    00000024     main.obj (.rodata.str1.954282607814150271)
+                  7000fe9f    00000023     main.obj (.rodata.str1.151061411185031815721)
+                  7000fec2    00000023     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.25776369892830718361)
+                  7000fee5    00000021                                               : ClockP_nortos_r5.obj (.rodata.str1.167645692065458388701)
+                  7000ff06    00000020     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.rodata.cst32)
+                  7000ff26    0000001f     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.rodata.str1.170816537386891942861)
+                  7000ff45    0000001f                                               : ClockP_nortos_r5.obj (.rodata.str1.37049961317335892191)
+                  7000ff64    0000001f                                               : SemaphoreP_nortos.obj (.rodata.str1.93106250239489445331)
+                  7000ff83    0000001e     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.rodata.str1.164849268246101456631)
+                  7000ffa1    0000001d                                                : ospi_v0.obj (.rodata.str1.130204404429707217721)
+                  7000ffbe    0000001d     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.rodata.str1.154036655774719862071)
+                  7000ffdb    0000001b     main.obj (.rodata.str1.103839438932389472821)
+                  7000fff6    0000001b     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.rodata.str1.25471646840808198631)
+                  70010011    0000001a                                               : TimerP.obj (.rodata.str1.160246686209138365701)
+                  7001002b    0000001a                                               : ClockP_nortos_r5.obj (.rodata.str1.169616377957066558931)
+                  70010045    0000001a     main.obj (.rodata.str1.19581600218089604221)
+                  7001005f    0000001a     main.obj (.rodata.str1.31872665017682117481)
+                  70010079    00000019     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.rodata.str1.170516325075394100231)
+                  70010092    00000002     --HOLE-- [fill = 0]
+                  70010094    00000018     drivers.am64x.r5f.ti-arm-clang.release.lib : sciclient_soc_priv.obj (.rodata..Lswitch.table.Sciclient_getDevId)
+                  700100ac    00000016                                                : mmcsd_v0.obj (.rodata.str1.110029375643886351641)
+                  700100c2    00000016                                                : ospi_v0.obj (.rodata.str1.168123064893126610931)
+                  700100d8    00000015     nortos.am64x.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.rodata.str1.67625122021398397081)
+                  700100ed    00000014     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.rodata.str1.118996750813502828521)
+                  70010101    00000014     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.rodata.str1.88986405623045072391)
+                  70010115    00000012     board.am64x.r5f.ti-arm-clang.release.lib : flash_nor_ospi.obj (.rodata.str1.106340452754120971351)
+                  70010127    00000012     ti_drivers_open_close.obj (.rodata.str1.148526748270575400251)
+                  70010139    00000012     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.rodata.str1.65571962875659042101)
+                  7001014b    00000011     libc.a : _printfi.c.obj (.rodata.str1.11645776875810915891)
+                  7001015c    00000011            : _printfi.c.obj (.rodata.str1.44690500295887128011)
+                  7001016d    00000011     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.rodata.str1.56392992661620616651)
+                  7001017e    00000011     ti_drivers_open_close.obj (.rodata.str1.6340099950395183551)
+                  7001018f    00000001     --HOLE-- [fill = 0]
+                  70010190    00000010     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.rodata.cst16)
+                  700101a0    00000010     ti_board_open_close.obj (.rodata.str1.37919595551125161991)
+                  700101b0    0000000f     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.rodata.str1.131304886953556701471)
+                  700101bf    0000000d     nortos.am64x.r5f.ti-arm-clang.release.lib : TimerP.obj (.rodata.str1.36936046049119147381)
+                  700101cc    0000000d                                               : TimerP.obj (.rodata.str1.90798414294938570131)
+                  700101d9    0000000c     drivers.am64x.r5f.ti-arm-clang.release.lib : ospi_v0.obj (.rodata.str1.129474731271572962271)
+                  700101e5    0000000c     nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.43857604347425843821)
+                  700101f1    0000000c     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_v0.obj (.rodata.str1.741583573595172461)
+                  700101fd    0000000c                                                : ddr.obj (.rodata.str1.81852406950125532191)
+                  70010209    0000000c                                                : ddr.obj (.rodata.str1.85710523956929449421)
+                  70010215    0000000b                                                : mmcsd_v0.obj (.rodata.str1.183648324259898368931)
+                  70010220    0000000b                                                : mmcsd_v0.obj (.rodata.str1.43863450352600118641)
+                  7001022b    0000000a     ti_board_open_close.obj (.rodata.str1.104873027471873634371)
+                  70010235    0000000a     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.rodata.str1.114661318390360142971)
+                  7001023f    0000000a                                                : ddr.obj (.rodata.str1.127390676962817437421)
+                  70010249    0000000a                                                : ospi_v0.obj (.rodata.str1.26648028664736553961)
+                  70010253    0000000a                                                : ospi_v0.obj (.rodata.str1.86366537999107289941)
+                  7001025d    00000007                                                : mmcsd_priv.obj (.rodata.str1.14635649641101615831)
+                  70010264    00000005     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.rodata.str1.180255128143303278211)
+                  70010269    00000005                                               : printf.obj (.rodata.str1.62992066646743021711)
+                  7001026e    00000002     --HOLE-- [fill = 0]
+                  70010270    00000004                                               : CacheP_armv7r.obj (.rodata.gCacheL1pCacheLineSize)
+                  70010274    00000004     drivers.am64x.r5f.ti-arm-clang.release.lib : mmcsd_priv.obj (.rodata.str1.124232670229305126911)
+                  70010278    00000004                                                : mmcsd_priv.obj (.rodata.str1.132689219980271751411)
+                  7001027c    00000004                                                : mmcsd_priv.obj (.rodata.str1.133459529989512184491)
+                  70010280    00000004                                                : mmcsd_priv.obj (.rodata.str1.141397064484657469161)
+                  70010284    00000004                                                : mmcsd_priv.obj (.rodata.str1.15134444037536003341)
+                  70010288    00000004                                                : mmcsd_priv.obj (.rodata.str1.162431280098224442771)
+                  7001028c    00000004                                                : mmcsd_priv.obj (.rodata.str1.175878939906506804041)
+                  70010290    00000004                                                : mmcsd_priv.obj (.rodata.str1.27080428221919052661)
+                  70010294    00000004                                                : mmcsd_priv.obj (.rodata.str1.32902624192886840581)
+                  70010298    00000004                                                : mmcsd_priv.obj (.rodata.str1.48600738789735347181)
+                  7001029c    00000004                                                : mmcsd_priv.obj (.rodata.str1.65715519980656175071)
+                  700102a0    00000004                                                : mmcsd_priv.obj (.rodata.str1.72549053080494542891)
+                  700102a4    00000004     nortos.am64x.r5f.ti-arm-clang.release.lib : printf.obj (.rodata.str1.83442741595977738081)
+                  700102a8    00000004                                               : printf.obj (.rodata.str1.92767893489218153371)
+                  700102ac    00000003     main.obj (.rodata.str1.97993385775340092391)
+                  700102af    00000001     --HOLE-- [fill = 0]
+
+.bss       0    70060000    00009b80     UNINITIALIZED
+                  70060000    00008000     main.obj (.bss)
+                  70068000    00001008     (.common:gHwiCtrl)
+                  70069008    000003c0     ti_drivers_config.obj (.bss.gMmcsdObjects)
+                  700693c8    00000038     (.common:gClockCtrl)
+                  70069400    00000200     (.common:gMmcsdDataBuf0)
+                  70069600    00000188     ti_drivers_config.obj (.bss.gOspiObjects)
+                  70069788    00000180     main.obj (.bss.filename)
+                  70069908    00000120     libsysbm.a : trgmsg.c.obj (.bss:_CIOBUF_)
+                  70069a28    000000a0     libc.a : defs.c.obj (.bss.__TI_tmpnams)
+                  70069ac8    00000028     (.common:gEmmcData0)
+                  70069af0    00000014     drivers.am64x.r5f.ti-arm-clang.release.lib : ddr.obj (.bss.gLpddrPd)
+                  70069b04    00000014     (.common:gFlashObject_S28HS512T)
+                  70069b18    00000010                                                : ddr.obj (.bss.gLpddrCfg)
+                  70069b28    00000010     main.obj (.bss.inputStr)
+                  70069b38    0000000c     (.common:gADMA2Desc)
+                  70069b44    00000008     libsysbm.a : hostopen.c.obj (.bss.parmbuf)
+                  70069b4c    00000004     nortos.am64x.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vim.obj (.bss.gdummy)
+                  70069b50    00000004     libc.a : memory.c.obj (.bss.sys_free)
+                  70069b54    00000004     (.common:gFlashHandle)
+                  70069b58    00000004     (.common:gMmcsdHandle)
+                  70069b5c    00000004     (.common:gOspiHandle)
+                  70069b60    00000020     --HOLE--
+
+.sysmem    0    70069b80    00008000     UNINITIALIZED
+                  70069b80    00000010     libc.a : memory.c.obj (.sysmem)
+                  70069b90    00007ff0     --HOLE--
+
+.stack     0    70071b80    00004000     UNINITIALIZED
+                  70071b80    00000004     nortos.am64x.r5f.ti-arm-clang.release.lib : boot_armv7r_asm.obj (.stack)
+                  70071b84    00003ffc     --HOLE--
+
+.irqstack 
+*          0    70075b80    00001000     UNINITIALIZED
+                  70075b80    00001000     --HOLE--
+
+.fiqstack 
+*          0    70076b80    00000100     UNINITIALIZED
+                  70076b80    00000100     --HOLE--
+
+.svcstack 
+*          0    70076c80    00000100     UNINITIALIZED
+                  70076c80    00000100     --HOLE--
+
+.abortstack 
+*          0    70076d80    00000100     UNINITIALIZED
+                  70076d80    00000100     --HOLE--
+
+.undefinedstack 
+*          0    70076e80    00000100     UNINITIALIZED
+                  70076e80    00000100     --HOLE--
+
+.bss.filebuf 
+*          0    80000000    00800000     NOLOAD SECTION
+                  80000000    00800000     main.obj (.bss.filebuf)
+
+__llvm_prf_cnts 
+*          0    70060000    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    70060000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                                   code    ro data   rw data
+       ------                                   ----    -------   -------
+    obj/release/
+       main.obj                                 828     1125      8421968
+       ti_drivers_config.obj                    62      0         9250   
+       ti_drivers_open_close.obj                210     142       572    
+       ti_board_open_close.obj                  138     80        240    
+       ti_dpl_config.obj                        82      100       28     
+       ti_power_clock_config.obj                114     0         64     
+       ti_pinmux_config.obj                     34      0         104    
+    +--+----------------------------------------+-------+---------+---------+
+       Total:                                   1468    1447      8432226
+                                                                         
+    /home/epswbld5/ti/ccs1250/ccs/tools/compiler/ti-cgt-armllvm_3.2.0.LTS/lib/armv7r-ti-none-eabihf/c/libc.a
+       _printfi.c.obj                           3576    34        0      
+       memory.c.obj                             1160    0         5      
+       strcmp32.S.obj                           924     0         0      
+       fopen.c.obj                              740     0         0      
+       fgets.c.obj                              640     0         0      
+       strtol.c.obj                             504     0         0      
+       defs.c.obj                               0       0         404    
+       setvbuf.c.obj                            324     0         0      
+       getdevice.c.obj                          284     0         0      
+       _io_perm.c.obj                           272     0         0      
+       fputc.c.obj                              268     0         0      
+       aeabi_ctype.S.obj                        0       257       0      
+       fclose.c.obj                             256     0         0      
+       snprintf.c.obj                           256     0         0      
+       _bufread.c.obj                           232     0         0      
+       fseek.c.obj                              184     0         0      
+       ftell.c.obj                              184     0         0      
+       fflush.c.obj                             140     0         0      
+       atoi.c.obj                               108     0         0      
+       exit.c.obj                               92      0         8      
+       autoinit.c.obj                           88      0         0      
+       memccpy.c.obj                            72      0         0      
+       wcslen.c.obj                             32      0         0      
+       memcpy32.S.obj                           28      0         0      
+       memset32.S.obj                           24      0         0      
+       aeabi_portable.c.obj                     12      0         4      
+       _lock.c.obj                              4       0         8      
+    +--+----------------------------------------+-------+---------+---------+
+       Total:                                   10404   291       429    
+                                                                         
+    /home/epswbld5/ti/ccs1250/ccs/tools/compiler/ti-cgt-armllvm_3.2.0.LTS/lib/armv7r-ti-none-eabihf/c/libsysbm.a
+       trgmsg.c.obj                             176     0         288    
+       open.c.obj                               312     0         1      
+       hostrename.c.obj                         208     0         0      
+       host_device.c.obj                        0       0         200    
+       hostopen.c.obj                           148     0         8      
+       hostlseek.c.obj                          152     0         0      
+       close.c.obj                              140     0         0      
+       hostread.c.obj                           132     0         0      
+       hostwrite.c.obj                          132     0         0      
+       hostunlink.c.obj                         108     0         0      
+       hostclose.c.obj                          96      0         0      
+       unlink.c.obj                             72      0         0      
+       lseek.c.obj                              52      0         0      
+       read.c.obj                               52      0         0      
+       write.c.obj                              52      0         0      
+       remove.c.obj                             4       0         0      
+    +--+----------------------------------------+-------+---------+---------+
+       Total:                                   1836    0         497    
+                                                                         
+    /home/epswbld5/ti/ccs1250/ccs/tools/compiler/ti-cgt-armllvm_3.2.0.LTS/lib/clang/15.0.7/lib/armv7r-ti-none-eabihf/libclang_rt.builtins.a
+       udivsi3.S.obj                            464     0         0      
+       udivmoddi4.S.obj                         280     0         0      
+       aeabi_uldivmod.S.obj                     36      0         0      
+       aeabi_memset.S.obj                       28      0         0      
+       aeabi_div0.c.obj                         8       0         0      
+       aeabi_memcpy.S.obj                       4       0         0      
+    +--+----------------------------------------+-------+---------+---------+
+       Total:                                   820     0         0      
+                                                                         
+    /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am64x_09_01_00_41/source/board/lib/board.am64x.r5f.ti-arm-clang.release.lib
+       flash_nor_ospi.obj                       4424    88        64     
+       flash.obj                                466     0         0      
+    +--+----------------------------------------+-------+---------+---------+
+       Total:                                   4890    88        64     
+                                                                         
+    /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am64x_09_01_00_41/source/drivers/lib/drivers.am64x.r5f.ti-arm-clang.release.lib
+       mmcsd_v0.obj                             7618    298       168    
+       ospi_v0.obj                              3252    149       156    
+       ospi_phy.obj                             3170    0         340    
+       ddr.obj                                  1050    418       36     
+       bootloader_uniflash.obj                  1476    0         0      
+       sciclient.obj                            1268    0         21     
+       sciclient_pm.obj                         1184    0         0      
+       lpddr4_16bit.obj                         614     306       0      
+       mmcsd_priv.obj                           658     103       0      
+       soc.obj                                  552     0         0      
+       lpddr4.obj                               494     0         0      
+       bootloader_mmcsd_raw.obj                 462     0         0      
+       sciclient_fmwSecureProxyMap.obj          0       300       0      
+       pinmux.obj                               198     0         0      
+       csl_emif.obj                             188     0         0      
+       sciclient_soc_priv.obj                   104     24        32     
+       ospi_dma.obj                             118     0         0      
+       ddr_soc.obj                              66      0         0      
+       csl_sec_proxy.obj                        10      0         0      
+    +--+----------------------------------------+-------+---------+---------+
+       Total:                                   22482   1598      753    
+                                                                         
+    /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am64x_09_01_00_41/source/kernel/nortos/lib/nortos.am64x.r5f.ti-arm-clang.release.lib
+       HwiP_armv7r_vim.obj                      1032    0         4108   
+       printf.obj                               4002    98        0      
+       CacheP_armv7r_asm.obj                    848     0         0      
+       TimerP.obj                               516     271       0      
+       ClockP_nortos.obj                        624     90        56     
+       HwiP_armv7r_handlers_nortos.obj          544     0         0      
+       ClockP_nortos_r5.obj                     266     176       0      
+       SemaphoreP_nortos.obj                    328     107       0      
+       MpuP_armv7r.obj                          398     0         0      
+       boot_armv7r_asm.obj                      252     0         0      
+       CacheP_armv7r.obj                        216     8         0      
+       DebugP_log.obj                           154     42        4      
+       HwiP_armv7r_handlers_nortos_asm.obj      192     0         0      
+       HwiP_armv7r_asm.obj                      152     0         0      
+       MpuP_armv7r_asm.obj                      128     0         0      
+       AddrTranslateP.obj                       104     0         12     
+       PmuP_armv7r.obj                          96      0         8      
+       HwiP_armv7r_vectors_nortos_sbl_asm.obj   64      0         0      
+       DebugP_nortos.obj                        56      0         0      
+       PmuP_armv7r_asm.obj                      56      0         0      
+       boot_armv7r.obj                          28      0         0      
+    +--+----------------------------------------+-------+---------+---------+
+       Total:                                   10056   792       4188   
+                                                                         
+       Heap:                                    0       0         32768  
+       Stack:                                   0       0         16384  
+    +--+----------------------------------------+-------+---------+---------+
+       Grand Total:                             51956   4216      8487309
+
+VENEERS
+
+callee name               veneer name
+   callee addr  veneer addr  call addr  call info
+--------------  -----------  ---------  ----------------
+putchar                   $Ven$TA$L$PI$$putchar
+   7000bbc8     7000bce4     7000bcd8   ti_dpl_config.obj (.text.putchar_)
+HwiP_enable               $Ven$TA$L$PI$$HwiP_enable
+   7000c428     7000bcec     7000af6a   ti_dpl_config.obj (.text.Dpl_init)
+HwiP_restore              $Ven$TA$L$PI$$HwiP_restore
+   7000c448     7000bcf4     7000af2a   nortos.am64x.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_stop)
+                             7000b15c                                             : ClockP_nortos.obj (.text.ClockP_destruct)
+                             7000b31c                                             : ClockP_nortos.obj (.text.ClockP_start)
+                             7000b4b8                                             : SemaphoreP_nortos.obj (.text.SemaphoreP_post)
+PmuP_enableCounters       $Ven$TA$L$PI$$PmuP_enableCounters
+   7000b4fc     7000bcfc     7000a120   nortos.am64x.r5f.ti-arm-clang.release.lib : PmuP_armv7r.obj (.text.pmu)
+HwiP_enableFIQ            $Ven$TA$L$PI$$HwiP_enableFIQ
+   7000c438     7000c478     7000c112   nortos.am64x.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vim.obj (.text.hwi)
+CacheP_invL1d             $Ven$TA$L$PI$$CacheP_invL1d
+   7000c4f0     7000c898     7000c894   nortos.am64x.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.text.cache)
+CacheP_enableL1p          $Ven$TA$L$PI$$CacheP_enableL1p
+   7000c4d8     7000c8a0     7000c86e   nortos.am64x.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.text.cache)
+HwiP_restore              $Ven$TA$L$PI$$HwiP_restore
+   7000c448     7000c8a8     7000c84e   nortos.am64x.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.text.cache)
+HwiP_restore              $Ven$TA$L$PI$$HwiP_restore
+   7000c448     7000cab8     7000c99c   nortos.am64x.r5f.ti-arm-clang.release.lib : MpuP_armv7r.obj (.text.mpu)
+                             7000c9d6                                             : MpuP_armv7r.obj (.text.mpu)
+MpuP_isEnableAsm          $Ven$TA$L$PI$$MpuP_isEnableAsm
+   7000ca90     7000cac0     7000c96c   nortos.am64x.r5f.ti-arm-clang.release.lib : MpuP_armv7r.obj (.text.mpu)
+
+[10 trampolines]
+[14 trampoline calls]
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                   
+-------   ----                                   
+70009bd3  AddrTranslateP_getLocalAddr            
+7000b9c1  Board_driversClose                     
+70004b85  Board_driversOpen                      
+700098d9  Board_flashOpen                        
+70007b13  Bootloader_MmcsdRaw_readFromOffset     
+70007853  Bootloader_MmcsdRaw_writeToOffset      
+70004e99  Bootloader_uniflashProcessFlashCommands
+7000bc9c  C$$EXIT                                
+7000a534  C$$IO$$                                
+7000bcab  CPS_UncachedRead32                     
+7000bcaf  CPS_UncachedWrite32                    
+7000bb0d  CSL_emifClearECCInterruptStatus        
+70009e9f  CSL_emifConfig                         
+7000b98d  CSL_emifDisableECC                     
+7000b9a7  CSL_emifEnableECC                      
+7000bb1f  CSL_emifEnableECCInterrupts            
+7000bc4d  CSL_secProxyGetDataAddr                
+7000c790  CacheP_configForceWrThru               
+7000c819  CacheP_disable                         
+7000c480  CacheP_disableL1d                      
+7000c4a8  CacheP_disableL1p                      
+7000c853  CacheP_enable                          
+7000c4c0  CacheP_enableL1d                       
+7000c4d8  CacheP_enableL1p                       
+7000c784  CacheP_getCacheLevelInfo               
+7000c74c  CacheP_getEnabled                      
+7000c7c1  CacheP_init                            
+7000c873  CacheP_inv                             
+7000c4f0  CacheP_invL1d                          
+7000c564  CacheP_invL1dAll                       
+7000c528  CacheP_invL1p                          
+7000c56c  CacheP_invL1pAll                       
+7000c7b0  CacheP_setDLFO                         
+7000c574  CacheP_wb                              
+7000c5ec  CacheP_wbAll                           
+7000c5b0  CacheP_wbInv                           
+7000c694  CacheP_wbInvAll                        
+7000c6ac  CacheP_wbInvAllAsm                     
+7000bc57  ClockP_Params_init                     
+7000a931  ClockP_construct                       
+7000b127  ClockP_destruct                        
+7000a5f1  ClockP_getTimeUsec                     
+7000bcb3  ClockP_getTimerCount                   
+70007473  ClockP_init                            
+7000bc6d  ClockP_isActive                        
+7000b2ed  ClockP_start                           
+7000aeef  ClockP_stop                            
+7000bcb7  ClockP_timerClearOverflowInt           
+7000a151  ClockP_timerTickIsr                    
+7000b459  ClockP_usleep                          
+7000b4ec  CycleCounterP_getCount32               
+7000a0f1  CycleCounterP_init                     
+7000a125  CycleCounterP_nsToTicks                
+7000a101  CycleCounterP_reset                    
+7000d3dc  DDRSS_ctlReg                           
+7000e3d2  DDRSS_ctlRegNum                        
+7000da78  DDRSS_phyIndepReg                      
+7000e720  DDRSS_phyIndepRegNum                   
+7000cbf0  DDRSS_phyReg                           
+7000dfdc  DDRSS_phyRegNum                        
+700035f9  DDR_init                               
+7000ae6b  DDR_socEnableVttRegulator              
+7000b823  DebugP_logZoneEnable                   
+7000af2f  Dpl_init                               
+7000b603  Drivers_close                          
+7000aa6f  Drivers_mmcsdOpen                      
+7000bbd9  Drivers_open                           
+7000aabb  Drivers_ospiOpen                       
+7000bbe7  Flash_close                            
+7000bb31  Flash_eraseBlk                         
+7000ba95  Flash_eraseSector                      
+7000b74d  Flash_getAttrs                         
+7000b771  Flash_getHandle                        
+7000bb67  Flash_getPhyTuningOffset               
+70009d07  Flash_offsetToBlkPage                  
+70009b69  Flash_offsetToSectorPage               
+7000b161  Flash_open                             
+7000aead  Flash_quirkSpansionUNHYSADisable       
+7000b8c5  Flash_read                             
+7000b8e3  Flash_write                            
+7000a030  HOSTclose                              
+70008c4c  HOSTlseek                              
+70008e10  HOSTopen                               
+7000928c  HOSTread                               
+700088a0  HOSTrename                             
+70009a90  HOSTunlink                             
+70009310  HOSTwrite                              
+7000be19  HwiP_Params_init                       
+7000bdd1  HwiP_clearInt                          
+7000be2b  HwiP_construct                         
+7000c3bc  HwiP_data_abort_handler                
+7000c31b  HwiP_data_abort_handler_c              
+7000bf75  HwiP_destruct                          
+7000c408  HwiP_disable                           
+7000c418  HwiP_disableFIQ                        
+7000bd49  HwiP_disableInt                        
+7000c460  HwiP_disableVIC                        
+7000c428  HwiP_enable                            
+7000c438  HwiP_enableFIQ                         
+7000bd21  HwiP_enableInt                         
+7000c450  HwiP_enableVIC                         
+7000c1af  HwiP_fiq_handler                       
+7000c470  HwiP_getCPSR                           
+7000c117  HwiP_inISR                             
+7000c047  HwiP_init                              
+7000c348  HwiP_irq_handler                       
+7000c129  HwiP_irq_handler_c                     
+7000bdf1  HwiP_post                              
+7000c2ed  HwiP_prefetch_abort_handler            
+7000c263  HwiP_reserved_handler                  
+7000c448  HwiP_restore                           
+7000bd7b  HwiP_restoreInt                        
+7000c2bf  HwiP_svc_handler                       
+7000c291  HwiP_undefined_handler                 
+70007149  LPDDR4_AckCtlInterrupt                 
+70006df5  LPDDR4_CheckCtlInterrupt               
+7000b321  LPDDR4_EnablePIInitiator               
+7000b9d9  LPDDR4_Init                            
+7000b355  LPDDR4_PollCtlIrq                      
+7000bb77  LPDDR4_Probe                           
+7000aa21  LPDDR4_ReadReg                         
+70009947  LPDDR4_Start                           
+7000af6f  LPDDR4_WriteCtlConfig                  
+7000ad55  LPDDR4_WritePhyConfig                  
+7000ac35  LPDDR4_WritePhyIndepConfig             
+7000a799  MMCSD_close                            
+700084c1  MMCSD_enableBootPartition              
+7000baa9  MMCSD_getBlockSize                     
+7000b54b  MMCSD_getHandle                        
+70009395  MMCSD_init                             
+70000edd  MMCSD_open                             
+70009201  MMCSD_parseCIDEmmc                     
+7000977d  MMCSD_parseCIDSd                       
+7000ad9b  MMCSD_parseCSDEmmc                     
+70008ce5  MMCSD_parseCSDSd                       
+70008fcb  MMCSD_parseECSDEmmc                    
+7000b701  MMCSD_parseSCRSd                       
+70007575  MMCSD_read                             
+70007761  MMCSD_write                            
+7000b5d5  Module_clockEnable                     
+7000b2b7  Module_clockSetFrequency               
+7000c8b1  MpuP_RegionAttrs_init                  
+7000c971  MpuP_disable                           
+7000ca40  MpuP_disableAsm                        
+7000ca58  MpuP_disableBRAsm                      
+7000c9a3  MpuP_enable                            
+7000ca68  MpuP_enableAsm                         
+7000ca80  MpuP_enableBRAsm                       
+7000c9db  MpuP_init                              
+7000c96d  MpuP_isEnable                          
+7000ca90  MpuP_isEnableAsm                       
+7000c8bf  MpuP_setRegion                         
+7000caa4  MpuP_setRegionAsm                      
+7000ba69  OSPI_ReadCmdParams_init                
+7000bb43  OSPI_Transaction_init                  
+7000ba7f  OSPI_WriteCmdParams_init               
+70009d6d  OSPI_close                             
+7000b843  OSPI_configResetPin                    
+7000b20f  OSPI_disablePhy                        
+7000b9f1  OSPI_disablePhyPipeline                
+7000ba09  OSPI_dmaClose                          
+7000b795  OSPI_dmaCopy                           
+7000b1d5  OSPI_dmaOpen                           
+7000b6d9  OSPI_enableDacMode                     
+7000babd  OSPI_enableModeBitsCmd                 
+7000bb87  OSPI_enableModeBitsRead                
+7000ade1  OSPI_enablePhy                         
+7000bbf5  OSPI_getBaudRateDivFromObj             
+7000bc11  OSPI_getFlashDataBaseAddr              
+7000b65b  OSPI_getHandle                         
+70009417  OSPI_init                              
+7000bca5  OSPI_isPhyEnable                       
+700051a3  OSPI_open                              
+70002ab1  OSPI_phyFindOTP1                       
+700039e5  OSPI_phyFindOTP2                       
+7000a26b  OSPI_phyFindRxHigh                     
+7000a2c7  OSPI_phyFindRxLow                      
+7000a323  OSPI_phyFindTxHigh                     
+7000a37f  OSPI_phyFindTxLow                      
+7000bb97  OSPI_phyGetTuningData                  
+7000aba1  OSPI_phyReadAttackVector               
+70009869  OSPI_phyResyncDLL                      
+7000ac7d  OSPI_phySetRdDelayTxRxDLL              
+70008ea5  OSPI_phyTuneDDR                        
+70006a69  OSPI_readCmd                           
+70007369  OSPI_readDirect                        
+7000ba21  OSPI_setCmdDummyCycles                 
+7000bc8b  OSPI_setCmdExtType                     
+7000a7eb  OSPI_setDeviceSize                     
+7000bba7  OSPI_setModeBits                       
+7000b727  OSPI_setNumAddrBytes                   
+7000bc77  OSPI_setPhyEnableSuccess               
+700063c1  OSPI_setProtocol                       
+7000b901  OSPI_setRdDataCaptureDelay             
+7000bad1  OSPI_setReadDummyCycles                
+70009f67  OSPI_setXferOpCodes                    
+7000725b  OSPI_writeCmd                          
+70006ccf  OSPI_writeIndirect                     
+70009595  Pinmux_config                          
+7000b801  Pinmux_init                            
+7000abeb  Pinmux_unlockMMR                       
+7000b514  PmuP_clearOverflowStatus               
+7000b504  PmuP_disableCounters                   
+7000b4fc  PmuP_enableCounters                    
+7000b50c  PmuP_getOverflowStatus                 
+7000b4f4  PmuP_setup                             
+7000bc03  PowerClock_init                        
+7000b687  SOC_controlModuleLockMMR               
+7000b031  SOC_controlModuleUnlockMMR             
+7000b863  SOC_getSelfCpuClk                      
+700099b5  SOC_moduleClockEnable                  
+70006b9d  SOC_moduleSetClockFrequency            
+7000a9d1  Sciclient_getContext                   
+7000b247  Sciclient_getCurrentContext            
+7000ba39  Sciclient_getDevId                     
+7000bc1d  Sciclient_getSelfDevIdCore             
+70008b17  Sciclient_init                         
+70009dd3  Sciclient_pmGetModuleClkFreq           
+7000968b  Sciclient_pmGetModuleClkNumParent      
+70009e39  Sciclient_pmGetModuleClkParent         
+70009a23  Sciclient_pmGetModuleState             
+7000a1af  Sciclient_pmModuleClkRequest           
+70009fcb  Sciclient_pmModuleGetClkStatus         
+70008757  Sciclient_pmQueryModuleClkFreq         
+70008f39  Sciclient_pmSetModuleClkFreq           
+7000a20d  Sciclient_pmSetModuleClkParent         
+7000ae27  Sciclient_pmSetModuleRst               
+7000a83d  Sciclient_pmSetModuleState             
+700044b1  Sciclient_service                      
+7000afaf  SemaphoreP_constructBinary             
+7000b06f  SemaphoreP_constructMutex              
+7000702f  SemaphoreP_destruct                    
+70008d7b  SemaphoreP_pend                        
+7000b48b  SemaphoreP_post                        
+7000b0ad  System_init                            
+7000b970  TI_memcpy_small                        
+7000ba50  TI_memset_small                        
+7000b883  TimerP_Params_init                     
+7000bb55  TimerP_clearOverflowInt                
+7000bcbb  TimerP_getCount                        
+7000bcbf  TimerP_getReloadCount                  
+70005cdd  TimerP_setup                           
+7000bc81  TimerP_start                           
+70069908  _CIOBUF_                               
+7000a3db  _DebugP_assert                         
+7000cbc5  _DebugP_assertNoLog                    
+7000b27f  _DebugP_logZone                        
+70076e80  __ABORT_STACK_END                      
+00000100  __ABORT_STACK_SIZE                     
+70076d80  __ABORT_STACK_START                    
+70069b80  __BSS_END                              
+70060000  __BSS_START                            
+70069908  __CIOBUF_                              
+70076c80  __FIQ_STACK_END                        
+00000100  __FIQ_STACK_SIZE                       
+70076b80  __FIQ_STACK_START                      
+70076b80  __IRQ_STACK_END                        
+00001000  __IRQ_STACK_SIZE                       
+70075b80  __IRQ_STACK_START                      
+70075b80  __STACK_END                            
+00004000  __STACK_SIZE                           
+70076d80  __SVC_STACK_END                        
+00000100  __SVC_STACK_SIZE                       
+70076c80  __SVC_STACK_START                      
+00008000  __SYSMEM_SIZE                          
+00000000  __TI_ATRegion0_region_sz               
+00000000  __TI_ATRegion0_src_addr                
+00000000  __TI_ATRegion0_trg_addr                
+00000000  __TI_ATRegion1_region_sz               
+00000000  __TI_ATRegion1_src_addr                
+00000000  __TI_ATRegion1_trg_addr                
+00000000  __TI_ATRegion2_region_sz               
+00000000  __TI_ATRegion2_src_addr                
+00000000  __TI_ATRegion2_trg_addr                
+UNDEFED   __TI_CINIT_Base                        
+UNDEFED   __TI_CINIT_Limit                       
+UNDEFED   __TI_Handler_Table_Base                
+UNDEFED   __TI_Handler_Table_Limit               
+7000a598  __TI_auto_init_nobinit_nopinit         
+70007944  __TI_buff_read                         
+7000a438  __TI_cleanup                           
+7000f1ac  __TI_cleanup_ptr                       
+700081f4  __TI_closefile                         
+7000905c  __TI_doflush                           
+7000f1b0  __TI_dtors_ptr                         
+7000efec  __TI_ft_end                            
+ffffffff  __TI_pprof_out_hndl                    
+70000100  __TI_printfi_nofloat                   
+ffffffff  __TI_prof_data_size                    
+ffffffff  __TI_prof_data_start                   
+700097f4  __TI_rd_ok                             
+7000a490  __TI_readmsg                           
+70000000  __TI_static_base__                     
+70069a28  __TI_tmpnams                           
+7000a4e8  __TI_writemsg                          
+700089e0  __TI_wrt_ok                            
+70076f80  __UNDEFINED_STACK_END                  
+00000100  __UNDEFINED_STACK_SIZE                 
+70076e80  __UNDEFINED_STACK_START                
+7000f490  __aeabi_ctype_table_                   
+7000f490  __aeabi_ctype_table_C                  
+7000f114  __aeabi_errno                          
+7000bc28  __aeabi_errno_addr                     
+7000bcd0  __aeabi_idiv0                          
+7000bce0  __aeabi_ldiv0                          
+7000bc34  __aeabi_memclr                         
+7000bc34  __aeabi_memclr4                        
+7000bc34  __aeabi_memclr8                        
+7000bcc4  __aeabi_memcpy                         
+7000bcc4  __aeabi_memcpy4                        
+7000bcc4  __aeabi_memcpy8                        
+7000bbb8  __aeabi_memset                         
+7000bbb8  __aeabi_memset4                        
+7000bbb8  __aeabi_memset8                        
+70005b0c  __aeabi_uidiv                          
+7000b7b8  __aeabi_uldivmod                       
+ffffffff  __binit__                              
+7000cbe3  __mpu_init                             
+70071b80  __stack                                
+70060000  __start___llvm_prf_bits                
+70060000  __start___llvm_prf_cnts                
+70060000  __stop___llvm_prf_bits                 
+70060000  __stop___llvm_prf_cnts                 
+70007030  __udivmoddi4                           
+70005b0c  __udivsi3                              
+7000caec  _c_int00                               
+7000cac8  _c_int00_sbl                           
+7000ee40  _device                                
+7000e9d4  _ftable                                
+7000f19c  _lock                                  
+7000bcc8  _nop                                   
+7000ef18  _stream                                
+70069b80  _sys_memory                            
+UNDEFED   _system_post_cinit                     
+7000b91d  _system_pre_init                       
+7000f1dc  _unlock                                
+70000000  _vectors_sbl                           
+7000bc9c  abort                                  
+7000605c  aligned_alloc                          
+70009afc  atoi                                   
+ffffffff  binit                                  
+70009174  close                                  
+7000a6f0  exit                                   
+7000ab08  fclose                                 
+7000a744  finddevice                             
+7000ab54  fopen                                  
+7000766c  fputc                                  
+70006210  free                                   
+7000bccc  fseek                                  
+700082a8  fseeko                                 
+7000bcd4  ftell                                  
+7000835c  ftello                                 
+70069b38  gADMA2Desc                             
+7000f1a0  gAddrTranslateConfig                   
+7000f594  gCacheConfig                           
+7000f6ec  gCacheL1dCacheLineSize                 
+70010270  gCacheL1pCacheLineSize                 
+7000f170  gClockConfig                           
+700693c8  gClockCtrl                             
+7000f1e8  gDebugLogZone                          
+70069ac8  gEmmcData0                             
+80000000  gFileBuf                               
+7000f028  gFlashAttrs_S28HS512T                  
+7000f188  gFlashConfig                           
+7000f1ec  gFlashConfigNum                        
+7000ecbc  gFlashDevCfg_S28HS512T                 
+70069b54  gFlashHandle                           
+7000f138  gFlashNorOspiFxns                      
+70069b04  gFlashObject_S28HS512T                 
+7000f1b4  gFlashParams                           
+7000f0ac  gFlashToSpiProtocolMap                 
+7000f1f0  gHwiConfig                             
+70068000  gHwiCtrl                               
+7000eac4  gMainMenu                              
+7000f1bc  gMmcsdConfig                           
+7000f1f4  gMmcsdConfigNum                        
+70069400  gMmcsdDataBuf0                         
+70069b58  gMmcsdHandle                           
+7000f1c4  gMmcsdParams                           
+7000f59c  gMpuConfig                             
+7000f5a8  gMpuRegionConfig                       
+7000f1cc  gOspiConfig                            
+7000f1f8  gOspiConfigNum                         
+7000cbf0  gOspiDmaConfig                         
+7000f1fc  gOspiDmaConfigNum                      
+70069b5c  gOspiHandle                            
+7000f200  gOspiParams                            
+7000f204  gPhyTuneWindowParams                   
+7000f05c  gPhyTuneWindowParamsGTE133             
+7000f084  gPhyTuneWindowParamsLT133              
+7000f364  gSciclientMap                          
+7000f118  gSciclientSecProxyCfg                  
+7000f154  gSocModules                            
+7000f0d0  gSocModulesClockFrequency              
+70060000  gVerifyBuf                             
+70007cc8  getdevice                              
+7000bae4  gets                                   
+7000b3bc  lseek                                  
+70007a2d  main                                   
+7000bc40  malloc                                 
+7000605c  memalign                               
+7000acc4  memccpy                                
+70006930  open                                   
+70069b44  parmbuf                                
+7000bbc8  putchar                                
+7000bcd9  putchar_                               
+7000b3f0  read                                   
+7000bcdc  remove                                 
+7000a88f  sbl_jtag_uniflash_erase_all            
+70005711  sbl_jtag_uniflash_load_file            
+700067ec  setvbuf                                
+70009704  snprintf                               
+70004120  strcmp                                 
+70005914  strtol                                 
+7000ad0c  unlink                                 
+7000b7dd  vprintf_                               
+7000b8a4  wcslen                                 
+7000b424  write                                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                   
+-------   ----                                   
+00000000  __TI_ATRegion0_region_sz               
+00000000  __TI_ATRegion0_src_addr                
+00000000  __TI_ATRegion0_trg_addr                
+00000000  __TI_ATRegion1_region_sz               
+00000000  __TI_ATRegion1_src_addr                
+00000000  __TI_ATRegion1_trg_addr                
+00000000  __TI_ATRegion2_region_sz               
+00000000  __TI_ATRegion2_src_addr                
+00000000  __TI_ATRegion2_trg_addr                
+00000100  __ABORT_STACK_SIZE                     
+00000100  __FIQ_STACK_SIZE                       
+00000100  __SVC_STACK_SIZE                       
+00000100  __UNDEFINED_STACK_SIZE                 
+00001000  __IRQ_STACK_SIZE                       
+00004000  __STACK_SIZE                           
+00008000  __SYSMEM_SIZE                          
+70000000  __TI_static_base__                     
+70000000  _vectors_sbl                           
+70000100  __TI_printfi_nofloat                   
+70000edd  MMCSD_open                             
+70002ab1  OSPI_phyFindOTP1                       
+700035f9  DDR_init                               
+700039e5  OSPI_phyFindOTP2                       
+70004120  strcmp                                 
+700044b1  Sciclient_service                      
+70004b85  Board_driversOpen                      
+70004e99  Bootloader_uniflashProcessFlashCommands
+700051a3  OSPI_open                              
+70005711  sbl_jtag_uniflash_load_file            
+70005914  strtol                                 
+70005b0c  __aeabi_uidiv                          
+70005b0c  __udivsi3                              
+70005cdd  TimerP_setup                           
+7000605c  aligned_alloc                          
+7000605c  memalign                               
+70006210  free                                   
+700063c1  OSPI_setProtocol                       
+700067ec  setvbuf                                
+70006930  open                                   
+70006a69  OSPI_readCmd                           
+70006b9d  SOC_moduleSetClockFrequency            
+70006ccf  OSPI_writeIndirect                     
+70006df5  LPDDR4_CheckCtlInterrupt               
+7000702f  SemaphoreP_destruct                    
+70007030  __udivmoddi4                           
+70007149  LPDDR4_AckCtlInterrupt                 
+7000725b  OSPI_writeCmd                          
+70007369  OSPI_readDirect                        
+70007473  ClockP_init                            
+70007575  MMCSD_read                             
+7000766c  fputc                                  
+70007761  MMCSD_write                            
+70007853  Bootloader_MmcsdRaw_writeToOffset      
+70007944  __TI_buff_read                         
+70007a2d  main                                   
+70007b13  Bootloader_MmcsdRaw_readFromOffset     
+70007cc8  getdevice                              
+700081f4  __TI_closefile                         
+700082a8  fseeko                                 
+7000835c  ftello                                 
+700084c1  MMCSD_enableBootPartition              
+70008757  Sciclient_pmQueryModuleClkFreq         
+700088a0  HOSTrename                             
+700089e0  __TI_wrt_ok                            
+70008b17  Sciclient_init                         
+70008c4c  HOSTlseek                              
+70008ce5  MMCSD_parseCSDSd                       
+70008d7b  SemaphoreP_pend                        
+70008e10  HOSTopen                               
+70008ea5  OSPI_phyTuneDDR                        
+70008f39  Sciclient_pmSetModuleClkFreq           
+70008fcb  MMCSD_parseECSDEmmc                    
+7000905c  __TI_doflush                           
+70009174  close                                  
+70009201  MMCSD_parseCIDEmmc                     
+7000928c  HOSTread                               
+70009310  HOSTwrite                              
+70009395  MMCSD_init                             
+70009417  OSPI_init                              
+70009595  Pinmux_config                          
+7000968b  Sciclient_pmGetModuleClkNumParent      
+70009704  snprintf                               
+7000977d  MMCSD_parseCIDSd                       
+700097f4  __TI_rd_ok                             
+70009869  OSPI_phyResyncDLL                      
+700098d9  Board_flashOpen                        
+70009947  LPDDR4_Start                           
+700099b5  SOC_moduleClockEnable                  
+70009a23  Sciclient_pmGetModuleState             
+70009a90  HOSTunlink                             
+70009afc  atoi                                   
+70009b69  Flash_offsetToSectorPage               
+70009bd3  AddrTranslateP_getLocalAddr            
+70009d07  Flash_offsetToBlkPage                  
+70009d6d  OSPI_close                             
+70009dd3  Sciclient_pmGetModuleClkFreq           
+70009e39  Sciclient_pmGetModuleClkParent         
+70009e9f  CSL_emifConfig                         
+70009f67  OSPI_setXferOpCodes                    
+70009fcb  Sciclient_pmModuleGetClkStatus         
+7000a030  HOSTclose                              
+7000a0f1  CycleCounterP_init                     
+7000a101  CycleCounterP_reset                    
+7000a125  CycleCounterP_nsToTicks                
+7000a151  ClockP_timerTickIsr                    
+7000a1af  Sciclient_pmModuleClkRequest           
+7000a20d  Sciclient_pmSetModuleClkParent         
+7000a26b  OSPI_phyFindRxHigh                     
+7000a2c7  OSPI_phyFindRxLow                      
+7000a323  OSPI_phyFindTxHigh                     
+7000a37f  OSPI_phyFindTxLow                      
+7000a3db  _DebugP_assert                         
+7000a438  __TI_cleanup                           
+7000a490  __TI_readmsg                           
+7000a4e8  __TI_writemsg                          
+7000a534  C$$IO$$                                
+7000a598  __TI_auto_init_nobinit_nopinit         
+7000a5f1  ClockP_getTimeUsec                     
+7000a6f0  exit                                   
+7000a744  finddevice                             
+7000a799  MMCSD_close                            
+7000a7eb  OSPI_setDeviceSize                     
+7000a83d  Sciclient_pmSetModuleState             
+7000a88f  sbl_jtag_uniflash_erase_all            
+7000a931  ClockP_construct                       
+7000a9d1  Sciclient_getContext                   
+7000aa21  LPDDR4_ReadReg                         
+7000aa6f  Drivers_mmcsdOpen                      
+7000aabb  Drivers_ospiOpen                       
+7000ab08  fclose                                 
+7000ab54  fopen                                  
+7000aba1  OSPI_phyReadAttackVector               
+7000abeb  Pinmux_unlockMMR                       
+7000ac35  LPDDR4_WritePhyIndepConfig             
+7000ac7d  OSPI_phySetRdDelayTxRxDLL              
+7000acc4  memccpy                                
+7000ad0c  unlink                                 
+7000ad55  LPDDR4_WritePhyConfig                  
+7000ad9b  MMCSD_parseCSDEmmc                     
+7000ade1  OSPI_enablePhy                         
+7000ae27  Sciclient_pmSetModuleRst               
+7000ae6b  DDR_socEnableVttRegulator              
+7000aead  Flash_quirkSpansionUNHYSADisable       
+7000aeef  ClockP_stop                            
+7000af2f  Dpl_init                               
+7000af6f  LPDDR4_WriteCtlConfig                  
+7000afaf  SemaphoreP_constructBinary             
+7000b031  SOC_controlModuleUnlockMMR             
+7000b06f  SemaphoreP_constructMutex              
+7000b0ad  System_init                            
+7000b127  ClockP_destruct                        
+7000b161  Flash_open                             
+7000b1d5  OSPI_dmaOpen                           
+7000b20f  OSPI_disablePhy                        
+7000b247  Sciclient_getCurrentContext            
+7000b27f  _DebugP_logZone                        
+7000b2b7  Module_clockSetFrequency               
+7000b2ed  ClockP_start                           
+7000b321  LPDDR4_EnablePIInitiator               
+7000b355  LPDDR4_PollCtlIrq                      
+7000b3bc  lseek                                  
+7000b3f0  read                                   
+7000b424  write                                  
+7000b459  ClockP_usleep                          
+7000b48b  SemaphoreP_post                        
+7000b4ec  CycleCounterP_getCount32               
+7000b4f4  PmuP_setup                             
+7000b4fc  PmuP_enableCounters                    
+7000b504  PmuP_disableCounters                   
+7000b50c  PmuP_getOverflowStatus                 
+7000b514  PmuP_clearOverflowStatus               
+7000b54b  MMCSD_getHandle                        
+7000b5d5  Module_clockEnable                     
+7000b603  Drivers_close                          
+7000b65b  OSPI_getHandle                         
+7000b687  SOC_controlModuleLockMMR               
+7000b6d9  OSPI_enableDacMode                     
+7000b701  MMCSD_parseSCRSd                       
+7000b727  OSPI_setNumAddrBytes                   
+7000b74d  Flash_getAttrs                         
+7000b771  Flash_getHandle                        
+7000b795  OSPI_dmaCopy                           
+7000b7b8  __aeabi_uldivmod                       
+7000b7dd  vprintf_                               
+7000b801  Pinmux_init                            
+7000b823  DebugP_logZoneEnable                   
+7000b843  OSPI_configResetPin                    
+7000b863  SOC_getSelfCpuClk                      
+7000b883  TimerP_Params_init                     
+7000b8a4  wcslen                                 
+7000b8c5  Flash_read                             
+7000b8e3  Flash_write                            
+7000b901  OSPI_setRdDataCaptureDelay             
+7000b91d  _system_pre_init                       
+7000b970  TI_memcpy_small                        
+7000b98d  CSL_emifDisableECC                     
+7000b9a7  CSL_emifEnableECC                      
+7000b9c1  Board_driversClose                     
+7000b9d9  LPDDR4_Init                            
+7000b9f1  OSPI_disablePhyPipeline                
+7000ba09  OSPI_dmaClose                          
+7000ba21  OSPI_setCmdDummyCycles                 
+7000ba39  Sciclient_getDevId                     
+7000ba50  TI_memset_small                        
+7000ba69  OSPI_ReadCmdParams_init                
+7000ba7f  OSPI_WriteCmdParams_init               
+7000ba95  Flash_eraseSector                      
+7000baa9  MMCSD_getBlockSize                     
+7000babd  OSPI_enableModeBitsCmd                 
+7000bad1  OSPI_setReadDummyCycles                
+7000bae4  gets                                   
+7000bb0d  CSL_emifClearECCInterruptStatus        
+7000bb1f  CSL_emifEnableECCInterrupts            
+7000bb31  Flash_eraseBlk                         
+7000bb43  OSPI_Transaction_init                  
+7000bb55  TimerP_clearOverflowInt                
+7000bb67  Flash_getPhyTuningOffset               
+7000bb77  LPDDR4_Probe                           
+7000bb87  OSPI_enableModeBitsRead                
+7000bb97  OSPI_phyGetTuningData                  
+7000bba7  OSPI_setModeBits                       
+7000bbb8  __aeabi_memset                         
+7000bbb8  __aeabi_memset4                        
+7000bbb8  __aeabi_memset8                        
+7000bbc8  putchar                                
+7000bbd9  Drivers_open                           
+7000bbe7  Flash_close                            
+7000bbf5  OSPI_getBaudRateDivFromObj             
+7000bc03  PowerClock_init                        
+7000bc11  OSPI_getFlashDataBaseAddr              
+7000bc1d  Sciclient_getSelfDevIdCore             
+7000bc28  __aeabi_errno_addr                     
+7000bc34  __aeabi_memclr                         
+7000bc34  __aeabi_memclr4                        
+7000bc34  __aeabi_memclr8                        
+7000bc40  malloc                                 
+7000bc4d  CSL_secProxyGetDataAddr                
+7000bc57  ClockP_Params_init                     
+7000bc6d  ClockP_isActive                        
+7000bc77  OSPI_setPhyEnableSuccess               
+7000bc81  TimerP_start                           
+7000bc8b  OSPI_setCmdExtType                     
+7000bc9c  C$$EXIT                                
+7000bc9c  abort                                  
+7000bca5  OSPI_isPhyEnable                       
+7000bcab  CPS_UncachedRead32                     
+7000bcaf  CPS_UncachedWrite32                    
+7000bcb3  ClockP_getTimerCount                   
+7000bcb7  ClockP_timerClearOverflowInt           
+7000bcbb  TimerP_getCount                        
+7000bcbf  TimerP_getReloadCount                  
+7000bcc4  __aeabi_memcpy                         
+7000bcc4  __aeabi_memcpy4                        
+7000bcc4  __aeabi_memcpy8                        
+7000bcc8  _nop                                   
+7000bccc  fseek                                  
+7000bcd0  __aeabi_idiv0                          
+7000bcd4  ftell                                  
+7000bcd9  putchar_                               
+7000bcdc  remove                                 
+7000bce0  __aeabi_ldiv0                          
+7000bd21  HwiP_enableInt                         
+7000bd49  HwiP_disableInt                        
+7000bd7b  HwiP_restoreInt                        
+7000bdd1  HwiP_clearInt                          
+7000bdf1  HwiP_post                              
+7000be19  HwiP_Params_init                       
+7000be2b  HwiP_construct                         
+7000bf75  HwiP_destruct                          
+7000c047  HwiP_init                              
+7000c117  HwiP_inISR                             
+7000c129  HwiP_irq_handler_c                     
+7000c1af  HwiP_fiq_handler                       
+7000c263  HwiP_reserved_handler                  
+7000c291  HwiP_undefined_handler                 
+7000c2bf  HwiP_svc_handler                       
+7000c2ed  HwiP_prefetch_abort_handler            
+7000c31b  HwiP_data_abort_handler_c              
+7000c348  HwiP_irq_handler                       
+7000c3bc  HwiP_data_abort_handler                
+7000c408  HwiP_disable                           
+7000c418  HwiP_disableFIQ                        
+7000c428  HwiP_enable                            
+7000c438  HwiP_enableFIQ                         
+7000c448  HwiP_restore                           
+7000c450  HwiP_enableVIC                         
+7000c460  HwiP_disableVIC                        
+7000c470  HwiP_getCPSR                           
+7000c480  CacheP_disableL1d                      
+7000c4a8  CacheP_disableL1p                      
+7000c4c0  CacheP_enableL1d                       
+7000c4d8  CacheP_enableL1p                       
+7000c4f0  CacheP_invL1d                          
+7000c528  CacheP_invL1p                          
+7000c564  CacheP_invL1dAll                       
+7000c56c  CacheP_invL1pAll                       
+7000c574  CacheP_wb                              
+7000c5b0  CacheP_wbInv                           
+7000c5ec  CacheP_wbAll                           
+7000c694  CacheP_wbInvAll                        
+7000c6ac  CacheP_wbInvAllAsm                     
+7000c74c  CacheP_getEnabled                      
+7000c784  CacheP_getCacheLevelInfo               
+7000c790  CacheP_configForceWrThru               
+7000c7b0  CacheP_setDLFO                         
+7000c7c1  CacheP_init                            
+7000c819  CacheP_disable                         
+7000c853  CacheP_enable                          
+7000c873  CacheP_inv                             
+7000c8b1  MpuP_RegionAttrs_init                  
+7000c8bf  MpuP_setRegion                         
+7000c96d  MpuP_isEnable                          
+7000c971  MpuP_disable                           
+7000c9a3  MpuP_enable                            
+7000c9db  MpuP_init                              
+7000ca40  MpuP_disableAsm                        
+7000ca58  MpuP_disableBRAsm                      
+7000ca68  MpuP_enableAsm                         
+7000ca80  MpuP_enableBRAsm                       
+7000ca90  MpuP_isEnableAsm                       
+7000caa4  MpuP_setRegionAsm                      
+7000cac8  _c_int00_sbl                           
+7000caec  _c_int00                               
+7000cbc5  _DebugP_assertNoLog                    
+7000cbe3  __mpu_init                             
+7000cbf0  DDRSS_phyReg                           
+7000cbf0  gOspiDmaConfig                         
+7000d3dc  DDRSS_ctlReg                           
+7000da78  DDRSS_phyIndepReg                      
+7000dfdc  DDRSS_phyRegNum                        
+7000e3d2  DDRSS_ctlRegNum                        
+7000e720  DDRSS_phyIndepRegNum                   
+7000e9d4  _ftable                                
+7000eac4  gMainMenu                              
+7000ecbc  gFlashDevCfg_S28HS512T                 
+7000ee40  _device                                
+7000ef18  _stream                                
+7000efec  __TI_ft_end                            
+7000f028  gFlashAttrs_S28HS512T                  
+7000f05c  gPhyTuneWindowParamsGTE133             
+7000f084  gPhyTuneWindowParamsLT133              
+7000f0ac  gFlashToSpiProtocolMap                 
+7000f0d0  gSocModulesClockFrequency              
+7000f114  __aeabi_errno                          
+7000f118  gSciclientSecProxyCfg                  
+7000f138  gFlashNorOspiFxns                      
+7000f154  gSocModules                            
+7000f170  gClockConfig                           
+7000f188  gFlashConfig                           
+7000f19c  _lock                                  
+7000f1a0  gAddrTranslateConfig                   
+7000f1ac  __TI_cleanup_ptr                       
+7000f1b0  __TI_dtors_ptr                         
+7000f1b4  gFlashParams                           
+7000f1bc  gMmcsdConfig                           
+7000f1c4  gMmcsdParams                           
+7000f1cc  gOspiConfig                            
+7000f1dc  _unlock                                
+7000f1e8  gDebugLogZone                          
+7000f1ec  gFlashConfigNum                        
+7000f1f0  gHwiConfig                             
+7000f1f4  gMmcsdConfigNum                        
+7000f1f8  gOspiConfigNum                         
+7000f1fc  gOspiDmaConfigNum                      
+7000f200  gOspiParams                            
+7000f204  gPhyTuneWindowParams                   
+7000f364  gSciclientMap                          
+7000f490  __aeabi_ctype_table_                   
+7000f490  __aeabi_ctype_table_C                  
+7000f594  gCacheConfig                           
+7000f59c  gMpuConfig                             
+7000f5a8  gMpuRegionConfig                       
+7000f6ec  gCacheL1dCacheLineSize                 
+70010270  gCacheL1pCacheLineSize                 
+70060000  __BSS_START                            
+70060000  __start___llvm_prf_bits                
+70060000  __start___llvm_prf_cnts                
+70060000  __stop___llvm_prf_bits                 
+70060000  __stop___llvm_prf_cnts                 
+70060000  gVerifyBuf                             
+70068000  gHwiCtrl                               
+700693c8  gClockCtrl                             
+70069400  gMmcsdDataBuf0                         
+70069908  _CIOBUF_                               
+70069908  __CIOBUF_                              
+70069a28  __TI_tmpnams                           
+70069ac8  gEmmcData0                             
+70069b04  gFlashObject_S28HS512T                 
+70069b38  gADMA2Desc                             
+70069b44  parmbuf                                
+70069b54  gFlashHandle                           
+70069b58  gMmcsdHandle                           
+70069b5c  gOspiHandle                            
+70069b80  __BSS_END                              
+70069b80  _sys_memory                            
+70071b80  __stack                                
+70075b80  __IRQ_STACK_START                      
+70075b80  __STACK_END                            
+70076b80  __FIQ_STACK_START                      
+70076b80  __IRQ_STACK_END                        
+70076c80  __FIQ_STACK_END                        
+70076c80  __SVC_STACK_START                      
+70076d80  __ABORT_STACK_START                    
+70076d80  __SVC_STACK_END                        
+70076e80  __ABORT_STACK_END                      
+70076e80  __UNDEFINED_STACK_START                
+70076f80  __UNDEFINED_STACK_END                  
+80000000  gFileBuf                               
+ffffffff  __TI_pprof_out_hndl                    
+ffffffff  __TI_prof_data_size                    
+ffffffff  __TI_prof_data_start                   
+ffffffff  __binit__                              
+ffffffff  binit                                  
+UNDEFED   __TI_CINIT_Base                        
+UNDEFED   __TI_CINIT_Limit                       
+UNDEFED   __TI_Handler_Table_Base                
+UNDEFED   __TI_Handler_Table_Limit               
+UNDEFED   _system_post_cinit                     
+
+[418 symbols]

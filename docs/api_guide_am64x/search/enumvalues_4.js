@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['gmsync_5fsync_22453',['GMSYNC_SYNC',['../group__gptp.html#ggaaa98238fc5a0ddfc7526b3348b5a250da06bcc77ba1cc775d8b03e98256e05127',1,'gptpbasetypes.h']]],
+  ['gmsync_5fsync_5fstable_22454',['GMSYNC_SYNC_STABLE',['../group__gptp.html#ggaaa98238fc5a0ddfc7526b3348b5a250dad187f0457ed2a04531261e4da9e54883',1,'gptpbasetypes.h']]],
+  ['gmsync_5funsync_22455',['GMSYNC_UNSYNC',['../group__gptp.html#ggaaa98238fc5a0ddfc7526b3348b5a250da2b720773d2761a4c98c527a1201a06c1',1,'gptpbasetypes.h']]],
+  ['gpmc_5fnand_5fecc_5falgo_5fbch_5f16bit_22456',['GPMC_NAND_ECC_ALGO_BCH_16BIT',['../group__DRV__GPMC__MODULE.html#gga3e59b6d2d7b55926af59d4fc5731ad50a9eab4bac0af0220e873b9fbee582b201',1,'gpmc.h']]],
+  ['gpmc_5fnand_5fecc_5falgo_5fbch_5f4bit_22457',['GPMC_NAND_ECC_ALGO_BCH_4BIT',['../group__DRV__GPMC__MODULE.html#gga3e59b6d2d7b55926af59d4fc5731ad50a0ad351bf1dd45ffb3a4300ef9343ced6',1,'gpmc.h']]],
+  ['gpmc_5fnand_5fecc_5falgo_5fbch_5f8bit_22458',['GPMC_NAND_ECC_ALGO_BCH_8BIT',['../group__DRV__GPMC__MODULE.html#gga3e59b6d2d7b55926af59d4fc5731ad50a5d8e813877aac2ca71cc86330f535812',1,'gpmc.h']]],
+  ['gpmc_5fnand_5fecc_5falgo_5fhamming_5f1bit_22459',['GPMC_NAND_ECC_ALGO_HAMMING_1BIT',['../group__DRV__GPMC__MODULE.html#gga3e59b6d2d7b55926af59d4fc5731ad50ac2530ac8494fe8c7ae517cb3de610045',1,'gpmc.h']]],
+  ['gpmc_5fnand_5fecc_5falgo_5fnone_22460',['GPMC_NAND_ECC_ALGO_NONE',['../group__DRV__GPMC__MODULE.html#gga3e59b6d2d7b55926af59d4fc5731ad50a0c2b6f0cafc604cd06b16cf7591cde87',1,'gpmc.h']]],
+  ['gpmc_5foperating_5fmode_5fblocking_22461',['GPMC_OPERATING_MODE_BLOCKING',['../group__DRV__GPMC__MODULE.html#ggad033c824088f580faea00a3210c09316a28366190a52a990cf81c14d039f36500',1,'gpmc.h']]],
+  ['gpmc_5foperating_5fmode_5fcallback_22462',['GPMC_OPERATING_MODE_CALLBACK',['../group__DRV__GPMC__MODULE.html#ggad033c824088f580faea00a3210c09316a05ae43495459b1e0fe827733b352cf67',1,'gpmc.h']]],
+  ['gpmc_5foperating_5fmode_5fpolling_22463',['GPMC_OPERATING_MODE_POLLING',['../group__DRV__GPMC__MODULE.html#ggad033c824088f580faea00a3210c09316af820c163ea217d19bf134af44c2376c8',1,'gpmc.h']]],
+  ['gpmc_5ftransaction_5ftype_5fread_22464',['GPMC_TRANSACTION_TYPE_READ',['../group__DRV__GPMC__MODULE.html#gga21cb8b9e8e6bca14ceab4ff9840a4005a8ba56145b5210c19fefdaf23c49c5162',1,'gpmc.h']]],
+  ['gpmc_5ftransaction_5ftype_5fread_5fcmdreg_22465',['GPMC_TRANSACTION_TYPE_READ_CMDREG',['../group__DRV__GPMC__MODULE.html#gga21cb8b9e8e6bca14ceab4ff9840a4005a091b64be9e2eaf6e5f31e5774bd4edd1',1,'gpmc.h']]],
+  ['gpmc_5ftransaction_5ftype_5fwrite_22466',['GPMC_TRANSACTION_TYPE_WRITE',['../group__DRV__GPMC__MODULE.html#gga21cb8b9e8e6bca14ceab4ff9840a4005ad9bf5ef67d03d5d83ecc4b9dc4f6689c',1,'gpmc.h']]],
+  ['gpmc_5ftransaction_5ftype_5fwrite_5fcmdreg_22467',['GPMC_TRANSACTION_TYPE_WRITE_CMDREG',['../group__DRV__GPMC__MODULE.html#gga21cb8b9e8e6bca14ceab4ff9840a4005aed5129c347da54283c0e02e0a86e3650',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5fcanceled_22468',['GPMC_TRANSFER_CANCELED',['../group__DRV__GPMC__MODULE.html#gga2b83da0eea0cc36bb990f7f45af61d04acdff3581dea58996545b25a033202828',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5fcompleted_22469',['GPMC_TRANSFER_COMPLETED',['../group__DRV__GPMC__MODULE.html#gga2b83da0eea0cc36bb990f7f45af61d04a47ac8e294c20f2d16a567f3d0fa5145a',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5fcsn_5fdeassert_22470',['GPMC_TRANSFER_CSN_DEASSERT',['../group__DRV__GPMC__MODULE.html#gga2b83da0eea0cc36bb990f7f45af61d04ab2554703daae5c52e5de453d03eebcef',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5ffailed_22471',['GPMC_TRANSFER_FAILED',['../group__DRV__GPMC__MODULE.html#gga2b83da0eea0cc36bb990f7f45af61d04a12f3f0ca06ee305e3b45a854fb4e8279',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5fmode_5fblocking_22472',['GPMC_TRANSFER_MODE_BLOCKING',['../group__DRV__GPMC__MODULE.html#ggabcdb9a1880b4206ec3e2d5e78478cf93a8f05429a97fcb72d1dd1bd91e3c15735',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5fmode_5fcallback_22473',['GPMC_TRANSFER_MODE_CALLBACK',['../group__DRV__GPMC__MODULE.html#ggabcdb9a1880b4206ec3e2d5e78478cf93a209e5bd87df1883d54082fc35ec5fa93',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5fstarted_22474',['GPMC_TRANSFER_STARTED',['../group__DRV__GPMC__MODULE.html#gga2b83da0eea0cc36bb990f7f45af61d04a3969ce0b6b47e01c6a0b6c0ce1c2721f',1,'gpmc.h']]],
+  ['gpmc_5ftransfer_5ftimeout_22475',['GPMC_TRANSFER_TIMEOUT',['../group__DRV__GPMC__MODULE.html#gga2b83da0eea0cc36bb990f7f45af61d04a1e7fcaf9cbfd3e6ad3446c6df372c4b2',1,'gpmc.h']]],
+  ['gps_22476',['GPS',['../group__gptp.html#ggaba942def63ce5b1eb539abe3c3c6668aa171ede81b49deebf3e342cdf41c62182',1,'gptpbasetypes.h']]]
+];
