@@ -38,7 +38,7 @@ ifeq ($(DEVICE_TYPE), HS)
 endif
 
 FILES_common := \
-	gpio_led_blink.c \
+	gpio_led_blink_rpmsg.c \
 	main.c \
 	ti_drivers_config.c \
 	ti_drivers_open_close.c \

@@ -88,7 +88,7 @@
             "
         ></configuration>
         <pathVariable name="MCU_PLUS_SDK_PATH" path="${COM_TI_MCU_PLUS_SDK_AM62X_INSTALL_DIR}" scope="project" />
-        <file path="../../../gpio_led_blink.c" openOnCreation="false" excludeFromBuild="false" action="copy">
+        <file path="../../../gpio_led_blink_rpmsg.c" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
         <file path="../main.c" openOnCreation="false" excludeFromBuild="false" action="copy">
         </file>
